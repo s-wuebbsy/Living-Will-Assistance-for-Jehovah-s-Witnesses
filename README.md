@@ -1,6 +1,6 @@
 # Living Will Assistance for Jehovah's Witnesses
 
-An interactive, single-file HTML tool to help Jehovah's Witnesses document their medical decisions in a structured, printable format — ready to be entered into the official **dpa-X Ge** advance directive. The tool takes into account the new guidance from the “2026 Governing Body Update #2”.
+An interactive, single-file HTML tool to help Jehovah's Witnesses document their medical decisions in a structured, printable format — ready to be entered into the official **dpa** advance directive. The tool takes into account the new guidance from the “2026 Governing Body Update #2”.
 
 ---
 
@@ -37,12 +37,12 @@ This tool walks through each category step by step, lets you record your persona
 
 ## How to Use
 
-1. Download `patientenverfuegung-blut.html`
+1. Download `living-will-helper-for-jw.html`
 2. Open it in any modern browser — no installation, no server needed
 3. Work through each section and toggle your decisions
 4. Click **"Text for Directive"** to generate your personalised text
-5. Copy the text and enter it into Section 3 of your dpa-X Ge form
-6. Review the completed form with your **hospital liaison committee** before signing
+5. Copy the text and enter it into Section 3 of your dpa form
+6. Review the completed form with your **eldest** before signing
 
 ---
 
@@ -51,8 +51,8 @@ This tool walks through each category step by step, lets you record your persona
 > This tool is a **decision-making aid**, not a legally binding document. The generated text is designed to complement the official dpa-X Ge form and is not a substitute for it.
 
 - All decisions on autologous procedures and blood fractions are **individual conscience matters** — this tool presents the facts, not recommendations
-- The fixed refusals (whole blood and the four primary components) reflect the clear Scriptural position of Jehovah's Witnesses (Acts 15:28, 29)
-- Before finalising your directive, consult your congregation's **Hospital Liaison Committee (HLC)** — they can review the wording and ensure it is legally effective in your country
+- The fixed refusals (whole blood and the four primary components) reflect the clear Scriptural position (Acts 15:28, 29).
+- Before finalising your directive, consult your congregation's **eldests** — they can review the wording and ensure it is legally effective in your country
 - Medical translations for ES and FR are accurate but should be verified by someone with local medical and legal knowledge before use in a non-German-speaking country
 
 ---
@@ -65,7 +65,7 @@ No data ever leaves your device. The tool runs entirely in the browser with no e
 
 ## Disclaimer
 
-This project is independently developed and is not an official publication of Jehovah's Witnesses or any congregation body. It does not constitute legal or medical advice. Always consult qualified professionals and your Hospital Liaison Committee when preparing a legally binding advance directive.
+This project is independently developed and is not an official publication of Jehovah's Witnesses or any congregation body. It does not constitute legal or medical advice. Always consult qualified professionals and your congregations eldests when preparing a legally binding advance directive.
 
 ---
 
