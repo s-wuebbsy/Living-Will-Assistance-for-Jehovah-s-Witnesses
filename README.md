@@ -1,6 +1,6 @@
 # Living Will Assistance for Jehovah's Witnesses
 
-An interactive, single-file HTML tool to help Jehovah's Witnesses document their medical decisions in a structured, printable format — ready to be entered into the official **dpa-X Ge** advance directive form (Germany/Austria/Switzerland).
+An interactive, single-file HTML tool to help Jehovah's Witnesses document their medical decisions in a structured, printable format — ready to be entered into the official **dpa-X Ge** advance directive. The tool takes into account the new guidance from the “2026 Governing Body Update #2”.
 
 ---
 
@@ -8,7 +8,7 @@ An interactive, single-file HTML tool to help Jehovah's Witnesses document their
 
 Completing an advance directive as a Jehovah's Witness involves more than simply refusing blood transfusions. It requires carefully considered, individually documented decisions across a range of medical procedures — from autologous blood techniques and blood fractions to life-sustaining measures across different clinical scenarios.
 
-This tool walks through each category step by step, lets you record your personal decisions, and generates a ready-to-use text for **Section 3** of the dpa-X Ge form.
+This tool walks through each category step by step, lets you record your personal decisions, and generates a ready-to-use text for **Section 3** of the dpa form.
 
 ---
 
