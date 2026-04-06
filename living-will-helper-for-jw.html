@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Entscheidungshilfe für Zeugen Jehovas zur Patientenverfügung – Blutverfahren und lebenserhaltende Maßnahmen. Decision guide for Jehovah's Witnesses – blood procedures and life-sustaining measures.">
 <title>Patientenverfügung · Advance Directive</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ── DARK MODE (default) ── */
@@ -28,8 +32,10 @@ body.light {
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.65; min-height: 100vh; transition: background 0.3s, color 0.3s; }
-body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(200,169,110,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(200,169,110,0.025) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
-body.light::before { background-image: linear-gradient(rgba(100,80,40,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(100,80,40,0.04) 1px, transparent 1px); }
+@media (prefers-reduced-motion: no-preference) {
+  body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(200,169,110,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(200,169,110,0.025) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
+  body.light::before { background-image: linear-gradient(rgba(100,80,40,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(100,80,40,0.04) 1px, transparent 1px); }
+}
 
 /* ── TOOLBAR ── */
 .toolbar { position: fixed; top: 0; left: 0; right: 0; z-index: 150; background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); transition: background 0.3s, border-color 0.3s; }
@@ -40,13 +46,18 @@ body.light::before { background-image: linear-gradient(rgba(100,80,40,0.04) 1px,
 /* Lang switcher */
 .lang-bar { display: flex; gap: 4px; background: var(--surface2); border-radius: 8px; padding: 3px; border: 1px solid var(--border); }
 .lang-btn { border: none; background: transparent; color: var(--text-muted); border-radius: 5px; padding: 4px 10px; font-size: 12px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.15s; letter-spacing: 0.5px; }
+.lang-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .lang-btn.active { background: var(--accent); color: #fff; }
 body.light .lang-btn.active { color: #fff; }
 
 /* Dark/Light toggle */
 .mode-toggle { display: flex; align-items: center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 5px 12px; cursor: pointer; font-size: 13px; color: var(--text-muted); font-family: 'Inter', sans-serif; transition: all 0.2s; }
 .mode-toggle:hover { color: var(--text); border-color: var(--text-dim); }
+.mode-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .mode-icon { font-size: 15px; }
+
+/* ── SR-ONLY (screenreader only) ── */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 /* ── CONTAINER ── */
 .container { max-width: 860px; margin: 0 auto; padding: 100px 24px 180px; position: relative; z-index: 1; }
@@ -54,7 +65,7 @@ body.light .lang-btn.active { color: #fff; }
 /* ── HEADER ── */
 header { text-align: center; margin-bottom: 56px; }
 .header-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; font-weight: 600; }
-h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 16px; }
+h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 16px; white-space: pre-line; }
 .header-sub { color: var(--text-muted); font-size: 16px; max-width: 580px; margin: 0 auto 28px; }
 .divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 0 auto; }
 
@@ -84,10 +95,14 @@ h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); 
 .card-desc { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
 .card-note { font-size: 13px; color: var(--accent); margin-top: 10px; padding: 8px 12px; background: rgba(200,169,110,0.08); border-left: 2px solid var(--accent); border-radius: 0 4px 4px 0; line-height: 1.55; }
 .toggle-group { display: flex; gap: 6px; flex-shrink: 0; margin-top: 2px; }
-.toggle-btn { border: 1px solid var(--border); background: var(--surface2); color: var(--text-muted); border-radius: 6px; padding: 6px 14px; font-size: 14px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
-.toggle-btn:hover { border-color: var(--text-dim); color: var(--text); }
-.toggle-btn.active-ja { background: var(--ja); border-color: var(--ja-border); color: var(--success); font-weight: 600; }
-.toggle-btn.active-nein { background: var(--nein); border-color: var(--nein-border); color: var(--danger); font-weight: 600; }
+
+/* ── SHARED CHOICE BUTTON ── */
+.choice-btn { border: 1px solid var(--border); color: var(--text-muted); border-radius: 6px; padding: 6px 14px; font-size: 14px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+.choice-btn:hover { border-color: var(--text-dim); color: var(--text); }
+.choice-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.choice-btn.active-ja { background: var(--ja); border-color: var(--ja-border); color: var(--success); font-weight: 600; }
+.choice-btn.active-nein { background: var(--nein); border-color: var(--nein-border); color: var(--danger); font-weight: 600; }
+.toggle-btn { background: var(--surface2); }
 .fixed-badge { font-size: 12px; padding: 4px 10px; border-radius: 20px; background: var(--surface2); border: 1px solid var(--border); color: var(--text-dim); white-space: nowrap; flex-shrink: 0; }
 
 /* ── NOTICE ── */
@@ -103,10 +118,7 @@ h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); 
 .lm-label { font-size: 14px; font-weight: 600; color: var(--text); min-width: 200px; flex-shrink: 0; }
 .lm-label span { font-size: 12px; font-weight: 400; color: var(--text-muted); display: block; margin-top: 1px; }
 .lm-btns { display: flex; gap: 6px; margin-left: auto; }
-.lm-btn { border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: 6px; padding: 5px 14px; font-size: 14px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.15s; }
-.lm-btn:hover { border-color: var(--text-dim); color: var(--text); }
-.lm-btn.active-ja { background: var(--ja); border-color: var(--ja-border); color: var(--success); font-weight: 600; }
-.lm-btn.active-nein { background: var(--nein); border-color: var(--nein-border); color: var(--danger); font-weight: 600; }
+.lm-btn { background: var(--bg); padding: 5px 14px; }
 
 /* ── SUMMARY BOX ── */
 .summary-box { position: fixed; bottom: 24px; right: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 20px; min-width: 210px; box-shadow: var(--shadow); z-index: 100; transition: background 0.3s, border-color 0.3s; }
@@ -115,11 +127,16 @@ h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); 
 .summary-label { color: var(--text-muted); }
 .summary-count { font-weight: 700; }
 .count-ja { color: var(--success); } .count-nein { color: var(--danger); } .count-offen { color: var(--warning); }
+.progress-bar { width: 100%; height: 6px; background: var(--surface2); border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.3s; }
+.progress-label { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-align: center; }
 .btn-group { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
 .text-btn { width: 100%; background: transparent; color: var(--accent); border: 1px solid var(--accent); border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s; }
 .text-btn:hover { background: rgba(200,169,110,0.12); }
+.text-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .export-btn { width: 100%; background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 9px 16px; font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: opacity 0.2s; }
 .export-btn:hover { opacity: 0.85; }
+.export-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ── MODAL ── */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 200; align-items: center; justify-content: center; padding: 24px; }
@@ -147,34 +164,56 @@ h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); 
 .modal-btn { flex: 1; padding: 11px; border-radius: 8px; font-size: 15px; font-family: 'Inter', sans-serif; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: var(--surface2); color: var(--text-muted); transition: all 0.15s; }
 .modal-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 .modal-btn:hover { opacity: 0.82; }
+.modal-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tab-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 620px) {
-  .toggle-group { flex-direction: column; } .summary-box { left: 12px; right: 12px; bottom: 12px; }
+  .toggle-group { flex-direction: column; } .summary-box { left: 12px; right: 12px; bottom: 12px; max-height: 45vh; overflow-y: auto; }
   .card-top { flex-direction: column; } .lm-row { flex-direction: column; align-items: flex-start; }
   .lm-btns { margin-left: 0; } .lm-label { min-width: unset; }
   .toolbar { flex-wrap: wrap; } .lang-bar { flex-wrap: wrap; }
+  .container { padding-bottom: 240px; }
+}
+@media print {
+  body, body.light { background: #fff; color: #000; }
+  body::before { display: none; }
+  .toolbar, .summary-box, .mode-toggle, .legend, .toggle-group, .lm-btns, .fixed-badge { display: none !important; }
+  .container { padding: 0; max-width: 100%; }
+  .card, .lm-card { break-inside: avoid; border-color: #ccc; background: #fff; opacity: 1; }
+  .card.fixed { opacity: 1; }
+  .card.state-ja { background: #e8f5e9; } .card.state-nein { background: #ffebee; }
+  .section-icon { border-color: #ccc; background: #f5f5f5; }
+  .card-name, .section-title, .lm-card-name { color: #000; }
+  .card-desc, .card-note, .section-subtitle, .lm-card-desc, .notice { color: #333; }
+  .notice { background: #f9f9f9; border-color: #ddd; }
+  .modal-overlay { position: static; display: block !important; background: none; padding: 0; }
+  .modal { max-width: 100%; max-height: none; box-shadow: none; border: none; padding: 0; }
+  .modal-actions, .tab-bar, .text-hint { display: none; }
+  .tab-panel { display: block !important; }
+  .text-output-box { border-color: #ccc; min-height: auto; }
+  a { text-decoration: none; color: #000; }
 }
 </style>
 </head>
 <body>
 
 <!-- ── TOOLBAR ── -->
-<div class="toolbar">
+<nav class="toolbar" aria-label="Hauptnavigation">
   <div class="toolbar-left">
-    <span class="toolbar-brand">dpa-X Ge · Patientenverfügung</span>
+    <span class="toolbar-brand">Dokument zur ärztlichen Versorgung</span>
   </div>
   <div class="toolbar-right">
-    <div class="lang-bar">
-      <button class="lang-btn active" onclick="setLang('de')">DE</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('es')">ES</button>
-      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    <div class="lang-bar" role="group" aria-label="Sprache wählen">
+      <button class="lang-btn active" data-lang="de" aria-pressed="true" aria-label="Deutsch">DE</button>
+      <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+      <button class="lang-btn" data-lang="es" aria-pressed="false" aria-label="Español">ES</button>
+      <button class="lang-btn" data-lang="fr" aria-pressed="false" aria-label="Français">FR</button>
     </div>
-    <button class="mode-toggle" onclick="toggleMode()" id="mode-btn">
-      <span class="mode-icon">☀️</span>
+    <button class="mode-toggle" id="mode-btn" aria-label="Farbmodus umschalten">
+      <span class="mode-icon" aria-hidden="true">☀️</span>
       <span id="mode-label">Light</span>
     </button>
   </div>
-</div>
+</nav>
 
 <div class="container">
   <header>
@@ -184,8 +223,8 @@ h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); 
     <div class="divider"></div>
   </header>
 
-  <div class="notice">
-    <span class="notice-icon">ℹ️</span>
+  <div class="notice" role="note">
+    <span class="notice-icon" aria-hidden="true">ℹ️</span>
     <span data-i18n="notice_main"></span>
   </div>
 
@@ -193,85 +232,85 @@ h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); 
     <div class="legend-item"><div class="legend-dot dot-ja"></div><span data-i18n="leg_accepted"></span></div>
     <div class="legend-item"><div class="legend-dot dot-nein"></div><span data-i18n="leg_rejected"></span></div>
     <div class="legend-item"><div class="legend-dot dot-offen"></div><span data-i18n="leg_open"></span></div>
-    <div class="legend-item"><div class="legend-dot dot-fix"></div><span data-i18n="leg_fixed"></span></div>
   </div>
 
   <!-- ── SECTION 1: FREMDBLUT ── -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon">🚫</div>
+      <div class="section-icon" aria-hidden="true">🚫</div>
       <div>
         <div class="section-title" data-i18n="s1_title"></div>
         <div class="section-subtitle" data-i18n="s1_sub"></div>
       </div>
     </div>
     <div class="card fixed state-nein" data-id="vollblut" data-fixed="nein">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="vollblut_name"></div><div class="card-desc" data-i18n="vollblut_desc"></div></div><span class="fixed-badge" data-i18n="fixed_nein"></span></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="vollblut_name"></div><div class="card-desc" data-i18n="vollblut_desc"></div></div><span class="fixed-badge" data-i18n="leg_rejected"></span></div>
     </div>
     <div class="card fixed state-nein" data-id="ery" data-fixed="nein">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="ery_name"></div><div class="card-desc" data-i18n="ery_desc"></div></div><span class="fixed-badge" data-i18n="fixed_nein"></span></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="ery_name"></div><div class="card-desc" data-i18n="ery_desc"></div></div><span class="fixed-badge" data-i18n="leg_rejected"></span></div>
     </div>
     <div class="card fixed state-nein" data-id="leuko" data-fixed="nein">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="leuko_name"></div><div class="card-desc" data-i18n="leuko_desc"></div></div><span class="fixed-badge" data-i18n="fixed_nein"></span></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="leuko_name"></div><div class="card-desc" data-i18n="leuko_desc"></div></div><span class="fixed-badge" data-i18n="leg_rejected"></span></div>
     </div>
     <div class="card fixed state-nein" data-id="thrombo" data-fixed="nein">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="thrombo_name"></div><div class="card-desc" data-i18n="thrombo_desc"></div></div><span class="fixed-badge" data-i18n="fixed_nein"></span></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="thrombo_name"></div><div class="card-desc" data-i18n="thrombo_desc"></div></div><span class="fixed-badge" data-i18n="leg_rejected"></span></div>
     </div>
     <div class="card fixed state-nein" data-id="plasma-fremd" data-fixed="nein">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="plasma_name"></div><div class="card-desc" data-i18n="plasma_desc"></div></div><span class="fixed-badge" data-i18n="fixed_nein"></span></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="plasma_name"></div><div class="card-desc" data-i18n="plasma_desc"></div></div><span class="fixed-badge" data-i18n="leg_rejected"></span></div>
     </div>
   </div>
 
   <!-- ── SECTION 2: EIGENBLUT ── -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon">🩸</div>
+      <div class="section-icon" aria-hidden="true">🩸</div>
       <div>
         <div class="section-title" data-i18n="s2_title"></div>
         <div class="section-subtitle" data-i18n="s2_sub"></div>
       </div>
     </div>
+    <div class="notice" role="note" style="margin-bottom:20px;"><span class="notice-icon" aria-hidden="true">📺</span><span id="s2-notice"></span></div>
 
     <div class="card" data-id="haemo" data-state="offen">
       <div class="card-top">
-        <div class="card-body"><div class="card-name" data-i18n="haemo_name"></div><div class="card-desc" data-i18n="haemo_desc"></div><div class="card-note" data-i18n="haemo_note"></div></div>
-        <div class="toggle-group"><button class="toggle-btn" onclick="setState('haemo','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('haemo','nein',this)" data-i18n-nein></button></div>
+        <div class="card-body"><div class="card-name" data-i18n="haemo_name"></div><div class="card-desc" data-i18n="haemo_desc"></div></div>
+        <div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div>
       </div>
     </div>
     <div class="card" data-id="cellsalvage" data-state="offen">
       <div class="card-top">
-        <div class="card-body"><div class="card-name" data-i18n="cellsalvage_name"></div><div class="card-desc" data-i18n="cellsalvage_desc"></div><div class="card-note" data-i18n="cellsalvage_note"></div></div>
-        <div class="toggle-group"><button class="toggle-btn" onclick="setState('cellsalvage','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('cellsalvage','nein',this)" data-i18n-nein></button></div>
+        <div class="card-body"><div class="card-name" data-i18n="cellsalvage_name"></div><div class="card-desc" data-i18n="cellsalvage_desc"></div></div>
+        <div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div>
       </div>
     </div>
     <div class="card" data-id="hlm" data-state="offen">
       <div class="card-top">
-        <div class="card-body"><div class="card-name" data-i18n="hlm_name"></div><div class="card-desc" data-i18n="hlm_desc"></div><div class="card-note" data-i18n="hlm_note"></div></div>
-        <div class="toggle-group"><button class="toggle-btn" onclick="setState('hlm','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('hlm','nein',this)" data-i18n-nein></button></div>
+        <div class="card-body"><div class="card-name" data-i18n="hlm_name"></div><div class="card-desc" data-i18n="hlm_desc"></div></div>
+        <div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div>
       </div>
     </div>
     <div class="card" data-id="dialyse" data-state="offen">
       <div class="card-top">
         <div class="card-body"><div class="card-name" data-i18n="dialyse_name"></div><div class="card-desc" data-i18n="dialyse_desc"></div></div>
-        <div class="toggle-group"><button class="toggle-btn" onclick="setState('dialyse','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('dialyse','nein',this)" data-i18n-nein></button></div>
+        <div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div>
       </div>
     </div>
     <div class="card" data-id="plasmapherese" data-state="offen">
       <div class="card-top">
         <div class="card-body"><div class="card-name" data-i18n="plasmapherese_name"></div><div class="card-desc" data-i18n="plasmapherese_desc"></div><div class="card-note" data-i18n="plasmapherese_note"></div></div>
-        <div class="toggle-group"><button class="toggle-btn" onclick="setState('plasmapherese','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('plasmapherese','nein',this)" data-i18n-nein></button></div>
+        <div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div>
       </div>
     </div>
     <div class="card" data-id="markierung" data-state="offen">
       <div class="card-top">
         <div class="card-body"><div class="card-name" data-i18n="markierung_name"></div><div class="card-desc" data-i18n="markierung_desc"></div></div>
-        <div class="toggle-group"><button class="toggle-btn" onclick="setState('markierung','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('markierung','nein',this)" data-i18n-nein></button></div>
+        <div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div>
       </div>
     </div>
     <div class="card" data-id="epiblut" data-state="offen">
       <div class="card-top">
         <div class="card-body"><div class="card-name" data-i18n="epiblut_name"></div><div class="card-desc" data-i18n="epiblut_desc"></div></div>
-        <div class="toggle-group"><button class="toggle-btn" onclick="setState('epiblut','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('epiblut','nein',this)" data-i18n-nein></button></div>
+        <div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div>
       </div>
     </div>
   </div>
@@ -279,44 +318,44 @@ h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); 
   <!-- ── SECTION 3: FRAKTIONEN ── -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon">🔬</div>
+      <div class="section-icon" aria-hidden="true">🔬</div>
       <div>
         <div class="section-title" data-i18n="s3_title"></div>
         <div class="section-subtitle" data-i18n="s3_sub"></div>
       </div>
     </div>
-    <div class="notice" style="margin-bottom:20px;"><span class="notice-icon">📖</span><span data-i18n="s3_notice"></span></div>
+    <div class="notice" role="note" style="margin-bottom:20px;"><span class="notice-icon" aria-hidden="true">📖</span><span data-i18n="s3_notice"></span></div>
 
     <div class="card" data-id="albumin" data-state="offen">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="albumin_name"></div><div class="card-desc" data-i18n="albumin_desc"></div></div><div class="toggle-group"><button class="toggle-btn" onclick="setState('albumin','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('albumin','nein',this)" data-i18n-nein></button></div></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="albumin_name"></div><div class="card-desc" data-i18n="albumin_desc"></div></div><div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div></div>
     </div>
     <div class="card" data-id="immunglobuline" data-state="offen">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="immun_name"></div><div class="card-desc" data-i18n="immun_desc"></div></div><div class="toggle-group"><button class="toggle-btn" onclick="setState('immunglobuline','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('immunglobuline','nein',this)" data-i18n-nein></button></div></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="immun_name"></div><div class="card-desc" data-i18n="immun_desc"></div></div><div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div></div>
     </div>
     <div class="card" data-id="gerinnungsfaktoren" data-state="offen">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="gerin_name"></div><div class="card-desc" data-i18n="gerin_desc"></div></div><div class="toggle-group"><button class="toggle-btn" onclick="setState('gerinnungsfaktoren','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('gerinnungsfaktoren','nein',this)" data-i18n-nein></button></div></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="gerin_name"></div><div class="card-desc" data-i18n="gerin_desc"></div></div><div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div></div>
     </div>
     <div class="card" data-id="haemoglobin" data-state="offen">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="haemoglobin_name"></div><div class="card-desc" data-i18n="haemoglobin_desc"></div></div><div class="toggle-group"><button class="toggle-btn" onclick="setState('haemoglobin','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('haemoglobin','nein',this)" data-i18n-nein></button></div></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="haemoglobin_name"></div><div class="card-desc" data-i18n="haemoglobin_desc"></div></div><div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div></div>
     </div>
     <div class="card" data-id="epo" data-state="offen">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="epo_name"></div><div class="card-desc" data-i18n="epo_desc"></div></div><div class="toggle-group"><button class="toggle-btn" onclick="setState('epo','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('epo','nein',this)" data-i18n-nein></button></div></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="epo_name"></div><div class="card-desc" data-i18n="epo_desc"></div></div><div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div></div>
     </div>
     <div class="card" data-id="prp" data-state="offen">
-      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="prp_name"></div><div class="card-desc" data-i18n="prp_desc"></div></div><div class="toggle-group"><button class="toggle-btn" onclick="setState('prp','ja',this)" data-i18n-ja></button><button class="toggle-btn" onclick="setState('prp','nein',this)" data-i18n-nein></button></div></div>
+      <div class="card-top"><div class="card-body"><div class="card-name" data-i18n="prp_name"></div><div class="card-desc" data-i18n="prp_desc"></div></div><div class="toggle-group" role="group" aria-label="Entscheidung"><button class="choice-btn toggle-btn" data-action="toggle" data-value="ja" data-i18n-ja aria-pressed="false"></button><button class="choice-btn toggle-btn" data-action="toggle" data-value="nein" data-i18n-nein aria-pressed="false"></button></div></div>
     </div>
   </div>
 
   <!-- ── SECTION 4: LEBENSERHALTENDE MASSNAHMEN ── -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon">🫀</div>
+      <div class="section-icon" aria-hidden="true">🫀</div>
       <div>
         <div class="section-title" data-i18n="s4_title"></div>
         <div class="section-subtitle" data-i18n="s4_sub"></div>
       </div>
     </div>
-    <div class="notice" style="margin-bottom:20px;"><span class="notice-icon">⚕️</span><span data-i18n="s4_notice"></span></div>
+    <div class="notice" role="note" style="margin-bottom:20px;"><span class="notice-icon" aria-hidden="true">⚕️</span><span data-i18n="s4_notice"></span></div>
 
     <div id="lm-cards-container"></div>
   </div>
@@ -324,7 +363,7 @@ h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); 
   <!-- ── SECTION 5: BLUTSPAREND ── -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon">✅</div>
+      <div class="section-icon" aria-hidden="true">✅</div>
       <div>
         <div class="section-title" data-i18n="s5_title"></div>
         <div class="section-subtitle" data-i18n="s5_sub"></div>
@@ -343,101 +382,105 @@ h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--text); 
 </div>
 
 <!-- ── SUMMARY BOX ── -->
-<div class="summary-box">
+<aside class="summary-box" aria-label="Zusammenfassung der Entscheidungen">
   <div class="summary-title" data-i18n="summary_title"></div>
+  <div class="progress-label" id="progress-label"></div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
   <div class="summary-row"><span class="summary-label" data-i18n="leg_accepted"></span><span class="summary-count count-ja" id="count-ja">0</span></div>
   <div class="summary-row"><span class="summary-label" data-i18n="leg_rejected"></span><span class="summary-count count-nein" id="count-nein">0</span></div>
   <div class="summary-row"><span class="summary-label" data-i18n="leg_open"></span><span class="summary-count count-offen" id="count-offen">0</span></div>
   <div class="btn-group">
-    <button class="text-btn" onclick="openModal('text')" data-i18n="btn_text"></button>
-    <button class="export-btn" onclick="openModal('summary')" data-i18n="btn_summary"></button>
+    <button class="text-btn" data-action="open-modal" data-tab="text" data-i18n="btn_text"></button>
+    <button class="export-btn" data-action="open-modal" data-tab="summary" data-i18n="btn_summary"></button>
+    <button class="text-btn" data-action="reset" data-i18n="btn_reset" style="color:var(--danger);border-color:var(--danger)"></button>
   </div>
-</div>
+</aside>
 
 <!-- ── MODAL ── -->
-<div class="modal-overlay" id="modal">
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
   <div class="modal">
-    <h2 data-i18n="modal_title"></h2>
+    <h2 data-i18n="modal_title" id="modal-heading"></h2>
     <p class="modal-sub" data-i18n="modal_sub"></p>
     <div class="tab-bar">
-      <button class="tab-btn active" onclick="switchTab('text')" data-i18n="tab_text"></button>
-      <button class="tab-btn" onclick="switchTab('summary')" data-i18n="tab_summary"></button>
+      <button class="tab-btn active" data-action="switch-tab" data-tab="text" data-i18n="tab_text"></button>
+      <button class="tab-btn" data-action="switch-tab" data-tab="summary" data-i18n="tab_summary"></button>
     </div>
     <div class="tab-panel active" id="tab-text">
       <div class="text-hint" data-i18n="text_hint"></div>
       <div class="text-output-box" id="generated-text"></div>
       <div class="warning-box" id="offen-warning" style="display:none;" data-i18n="offen_warning"></div>
       <div class="modal-actions">
-        <button class="modal-btn" onclick="closeModal()" data-i18n="btn_close"></button>
-        <button class="modal-btn primary" id="copy-btn" onclick="copyText()" data-i18n="btn_copy"></button>
+        <button class="modal-btn" data-action="close-modal" data-i18n="btn_close"></button>
+        <button class="modal-btn primary" id="copy-btn" data-action="copy-text" data-i18n="btn_copy"></button>
       </div>
     </div>
     <div class="tab-panel" id="tab-summary">
       <div id="modal-content"></div>
       <div class="modal-actions">
-        <button class="modal-btn" onclick="closeModal()" data-i18n="btn_close"></button>
-        <button class="modal-btn primary" onclick="window.print()" data-i18n="btn_print"></button>
+        <button class="modal-btn" data-action="close-modal" data-i18n="btn_close"></button>
+        <button class="modal-btn primary" data-action="print" data-i18n="btn_print"></button>
       </div>
     </div>
   </div>
 </div>
 
-<script>
+<script id="translations">
 // ══════════════════════════════════════════
 // TRANSLATIONS
 // ══════════════════════════════════════════
 const T = {
   de: {
-    eyebrow: 'Persönliche Dokumentation · dpa-X Ge',
+    eyebrow: 'Persönliche Dokumentation · Dokument zur ärztlichen Versorgung',
     h1: 'Blutbezogene Verfahren &\nLebenserhaltende Maßnahmen',
-    header_sub: 'Entscheidungshilfe für Zeugen Jehovas – erzeugt einen druckfertigen Text für Punkt 3 des offiziellen dpa-X Ge Formulars.',
-    notice_main: 'Wähle für jedes Verfahren deine persönliche Entscheidung. Feststehende Punkte (grau) sind keine Gewissensfrage. Der generierte Text passt in Punkt 3 des Formulars und sollte mit dem Krankenhausverbindungskomitee abgestimmt werden.',
-    leg_accepted: 'Akzeptiert', leg_rejected: 'Abgelehnt', leg_open: 'Noch offen', leg_fixed: 'Feststehend',
-    s1_title: 'Absolut abgelehnt', s1_sub: 'Fremdblut – keine Gewissensfrage (Apg. 15:28, 29)',
+    header_sub: 'Entscheidungshilfe für Zeugen Jehovas – erzeugt einen Textvorschlag für das Dokument zur ärztlichen Versorgung.',
+    notice_main: 'Wähle für jedes Verfahren deine persönliche Entscheidung. Solltest du dir bei einem Verfahren oder der Formulierung unsicher sein, sprich bitte einen deiner Versammlungsältesten an.',
+    leg_accepted: 'Akzeptiert', leg_rejected: 'Abgelehnt', leg_open: 'Noch offen',
+    s1_title: 'Fremdblut', s1_sub: 'Abgelehnt – keine Gewissensfrage (Apg. 15:28, 29)',
     vollblut_name: 'Fremd-Vollblut', vollblut_desc: 'Komplette Bluttransfusion von einem anderen Menschen.',
     ery_name: 'Fremd-Erythrozyten (rote Blutkörperchen)', ery_desc: 'Hauptbestandteil – Sauerstofftransport.',
     leuko_name: 'Fremd-Leukozyten (weiße Blutkörperchen)', leuko_desc: 'Hauptbestandteil – Immunabwehr.',
     thrombo_name: 'Fremd-Thrombozyten (Blutplättchen)', thrombo_desc: 'Hauptbestandteil – Blutgerinnung.',
     plasma_name: 'Fremd-Plasma', plasma_desc: 'Hauptbestandteil – flüssiger Blutanteil.',
-    fixed_nein: 'Feststehend – NEIN', no_blood: 'Kein Blutprodukt',
+    no_blood: 'Kein Blutprodukt',
     s2_title: 'Eigenblut-Verfahren', s2_sub: 'Gewissensfrage – persönliche Entscheidung',
-    haemo_name: 'Normovolämische Hämodilution', haemo_desc: 'Eigenes Blut wird vor der OP entnommen und in einem Beutel gelagert; nach der OP zurückgegeben.', haemo_note: '⚠️ Blut verlässt den Körper und wird extern gelagert.',
-    cellsalvage_name: 'Zellsalvage (maschinelle Autotransfusion)', cellsalvage_desc: 'OP-Blut wird aufgesaugt, maschinell gewaschen und sofort zurückgegeben.', cellsalvage_note: '💡 Akzeptabel bei durchgehend geschlossenem Kreislauf.',
-    hlm_name: 'Herz-Lungen-Maschine', hlm_desc: 'Übernimmt Herz-/Lungenfunktion; Blut durch externe Maschine.', hlm_note: '⚠️ Bedingung (geschlossener Kreislauf, keine Lagerung) im Formular vermerken.',
-    dialyse_name: 'Hämodialyse', dialyse_desc: 'Blut wird extern gereinigt und zurückgegeben (geschlossener Kreislauf möglich).',
-    plasmapherese_name: 'Plasmapherese (Eigenblut)', plasmapherese_desc: 'Eigenes Plasma wird gereinigt, Blutzellen zurückgegeben.', plasmapherese_note: '⚠️ Nur wenn ausschließlich eigenes Plasma gereinigt wird – kein Fremdplasma.',
-    markierung_name: 'Blutmarkierung (Nuklearmedizin)', markierung_desc: 'Eigene Blutzellen werden markiert und zurückgegeben (Diagnostik).',
-    epiblut_name: 'Epiduraler Blutpatch', epiblut_desc: 'Kleine Menge eigenes Blut sofort in den Epiduralraum injiziert. Kein Lagern.',
-    s3_title: 'Fraktionen der Hauptbestandteile', s3_sub: 'Individuelle Gewissensentscheidung',
-    s3_notice: 'Fraktionen enthalten keine vollständigen Blutbestandteile. Ob man sie akzeptiert, ist eine persönliche Gewissensfrage.',
-    albumin_name: 'Albumin', albumin_desc: 'Aus Plasma. Transportprotein. Einsatz bei Eiweißmangel, Schock.',
-    immun_name: 'Immunglobuline', immun_desc: 'Aus Plasma. Antikörper zur Immunstärkung.',
-    gerin_name: 'Gerinnungsfaktoren', gerin_desc: 'Aus Plasma. Einsatz bei Hämophilie (Faktor VIII, IX, XIII u.a.).',
-    haemoglobin_name: 'Hämoglobin-Sauerstoffträger', haemoglobin_desc: 'Aus roten Blutkörperchen, chemisch modifiziert. Blutersatz.',
-    epo_name: 'Erythropoetin (EPO)', epo_desc: 'Synthetisches Hormon zur Anregung der Blutbildung. Kein direktes Blutprodukt.',
-    prp_name: 'Thrombozyten-Wachstumsfaktoren (PRP)', prp_desc: 'Plättchenreiches Plasma aus eigenem Blut. Heilungsförderung.',
-    s4_title: 'Lebenserhaltende Maßnahmen', s4_sub: 'Je nach Situation – drei Szenarien',
-    s4_notice: 'S1 = Vorübergehend heilbar (z.B. Unfall, OP-Komplikation) · S2 = Dauerhaft bewusstlos (z.B. Wachkoma) · S3 = Sterbephase (Endstadium unheilbarer Erkrankung).',
+    s2_notice: 'Siehe hierzu den {link_start}Lagebericht der leitenden Körperschaft Nr.\u00A02 (2026){link_end} für aktuelle Erläuterungen.',
+    haemo_name: 'Normovolämische Hämodilution', haemo_desc: 'Vor der OP wird eine bestimmte Menge eigenes Blut entnommen und durch Infusionslösung ersetzt. Das entnommene Blut wird in einem Beutel gelagert und nach der OP zurückgegeben.',
+    cellsalvage_name: 'Zellsalvage (maschinelle Autotransfusion)', cellsalvage_desc: 'Während der OP verlorenes Blut wird aufgesaugt, maschinell von Verunreinigungen gewaschen und dem Patienten sofort wieder zugeführt.',
+    hlm_name: 'Herz-Lungen-Maschine', hlm_desc: 'Die Maschine übernimmt vorübergehend die Herz- und Lungenfunktion. Das Blut wird dabei durch einen externen Kreislauf geleitet und dem Körper wieder zugeführt.',
+    dialyse_name: 'Hämodialyse', dialyse_desc: 'Das Blut wird außerhalb des Körpers durch ein Dialysegerät gefiltert und gereinigt, anschließend in den Kreislauf zurückgeführt.',
+    plasmapherese_name: 'Plasmapherese', plasmapherese_desc: 'Das eigene Plasma wird vom Blut getrennt, gereinigt und zusammen mit den Blutzellen zurückgegeben.', plasmapherese_note: '⚠️ Bei Zustimmung sollte in der Patientenverfügung ausdrücklich vermerkt werden, dass ausschließlich eigenes Plasma gereinigt und zurückgegeben werden soll – kein Ersatz durch Fremdplasma.',
+    markierung_name: 'Blutmarkierung (Nuklearmedizin)', markierung_desc: 'Für diagnostische Zwecke wird eine kleine Menge eigenes Blut entnommen, mit einem Marker versehen und anschließend zurückgegeben.',
+    epiblut_name: 'Epiduraler Blutpatch', epiblut_desc: 'Eine kleine Menge eigenes Blut wird sofort in den Epiduralraum (den Bereich um die Rückenmarkshäute) injiziert, um ein Liquorleck (einen Austritt von Gehirn-Rückenmarks-Flüssigkeit, z.\u00A0B. nach einer Punktion) zu verschließen. Es erfolgt keine Lagerung.',
+    s3_title: 'Fraktionen der Hauptbestandteile', s3_sub: 'Gewissensfrage – persönliche Entscheidung',
+    s3_notice: 'Fraktionen (manche Ärzte verwenden auch den Begriff „Derivate") sind einzelne Bestandteile, die aus den vier Hauptkomponenten des Blutes gewonnen werden. Sie enthalten kein vollständiges Blut und kommen teilweise auch in Impfstoffen oder als synthetische Varianten zum Einsatz.',
+    albumin_name: 'Albumin', albumin_desc: 'Ein Transportprotein, das aus Blutplasma gewonnen wird. Wird medizinisch bei schwerem Eiweißmangel, Schock oder Verbrennungen eingesetzt. Albumin ist auch als Stabilisator in einigen Impfstoffen enthalten.',
+    immun_name: 'Immunglobuline', immun_desc: 'Antikörper, die aus Blutplasma gewonnen werden. Werden zur passiven Immunisierung oder bei Immunschwäche eingesetzt. Bestimmte Immunglobuline sind auch Bestandteil einiger Impfstoffe (z.\u00A0B. Anti-D, Tetanus-Immunglobulin).',
+    gerin_name: 'Gerinnungsfaktoren', gerin_desc: 'Werden aus Plasma gewonnen oder zunehmend rekombinant (synthetisch) hergestellt. Einsatz vor allem bei Hämophilie (z.\u00A0B. Faktor VIII, IX). Rekombinante Varianten enthalten kein menschliches Blut.',
+    haemoglobin_name: 'Hämoglobin-basierte Sauerstoffträger', haemoglobin_desc: 'Aus roten Blutkörperchen extrahiertes und chemisch modifiziertes Hämoglobin, das als Sauerstoffträger dient. Wird als Alternative zu Bluttransfusionen erforscht. Es gibt auch vollsynthetische Varianten in der Entwicklung.',
+    epo_name: 'Erythropoetin (EPO)', epo_desc: 'Ein Hormon, das die Bildung roter Blutkörperchen anregt. Wird heute vollständig synthetisch (rekombinant) hergestellt und enthält kein menschliches Blut. Wird z.\u00A0B. bei Anämie oder vor geplanten Operationen eingesetzt.',
+    prp_name: 'Thrombozyten-Wachstumsfaktoren (PRP)', prp_desc: 'Plättchenreiches Plasma, das aus dem eigenen Blut des Patienten gewonnen wird. Enthält Wachstumsfaktoren, die die Wundheilung fördern. Einsatz z.\u00A0B. in der Orthopädie oder Zahnmedizin.',
+    s4_title: 'Lebenserhaltende Maßnahmen', s4_sub: 'Persönliche Entscheidung – je nach Szenario',
+    s4_notice: 'Für jede Maßnahme kann die Entscheidung je nach Situation unterschiedlich ausfallen. Deshalb wird zwischen drei Szenarien unterschieden: S1 = Gute Heilungsaussicht · S2 = Keine Aussicht auf Besserung · S3 = Sterbephase.',
     lm_items: [
-      { id: 'beatmung', name: 'Künstliche Beatmung', desc: 'Maschinelle Beatmung (Intubation/Maske) wenn eigenständiges Atmen nicht mehr möglich.' },
-      { id: 'reanimation', name: 'Wiederbelebung (Reanimation)', desc: 'Herzdruckmassage, Defibrillation bei Herzstillstand.' },
-      { id: 'ernaehrung', name: 'Künstliche Ernährung & Flüssigkeit', desc: 'Magensonde (PEG) oder intravenöse Infusion wenn Essen/Trinken nicht mehr möglich.' },
-      { id: 'intensiv', name: 'Intensivmedizinische Behandlung', desc: 'Verlegung auf Intensivstation mit allen verfügbaren lebenserhaltenden Mitteln.' },
-      { id: 'schmerz', name: 'Schmerzlinderung & Palliativversorgung', desc: 'Schmerzmittel und palliative Sedierung zur Leidensminderung – auch wenn dies den Sterbeprozess möglicherweise beschleunigt.' },
-      { id: 'antibiose', name: 'Lebensverlängernde Medikamente', desc: 'Antibiotika, Chemotherapie u.ä. ausschließlich zur Lebensverlängerung ohne Heilungsaussicht.' },
+      { id: 'beatmung', name: 'Künstliche Beatmung', desc: 'Ein Beatmungsgerät übernimmt das Atmen, wenn die Lunge dies nicht mehr selbstständig kann. Dies geschieht über einen Schlauch in der Luftröhre (Intubation) oder eine Atemmaske.' },
+      { id: 'reanimation', name: 'Wiederbelebung (Reanimation)', desc: 'Bei einem Herzstillstand wird versucht, das Herz durch Herzdruckmassage und elektrische Schocks (Defibrillation) wieder in Gang zu bringen.' },
+      { id: 'ernaehrung', name: 'Künstliche Ernährung & Flüssigkeit', desc: 'Wenn Essen oder Trinken nicht mehr möglich ist, werden Nährstoffe und Flüssigkeit über eine Magensonde oder direkt über die Vene (Infusion) zugeführt.' },
+      { id: 'intensiv', name: 'Intensivmedizinische Behandlung', desc: 'Verlegung auf die Intensivstation, wo alle verfügbaren Geräte und Medikamente eingesetzt werden, um die Körperfunktionen aufrechtzuerhalten.' },
+      { id: 'schmerz', name: 'Schmerzlinderung & Palliativversorgung', desc: 'Verabreichung von Schmerzmitteln und beruhigenden Medikamenten, um Leiden zu lindern. In manchen Fällen kann dies den Sterbeprozess als Nebeneffekt beschleunigen.' },
+      { id: 'antibiose', name: 'Lebensverlängernde Medikamente', desc: 'Medikamente wie Antibiotika oder Chemotherapie, die ausschließlich dazu dienen, das Leben zu verlängern, obwohl keine Aussicht auf Heilung besteht.' },
     ],
-    sc_s1: 'S1 – Vorübergehend heilbar', sc_s1_sub: 'z.B. Unfall, OP-Komplikation',
-    sc_s2: 'S2 – Dauerhaft bewusstlos', sc_s2_sub: 'Wachkoma ohne Besserungsaussicht',
-    sc_s3: 'S3 – Sterbephase', sc_s3_sub: 'Endstadium, unheilbare Erkrankung',
-    s5_title: 'Blutsparende Alternativen', s5_sub: 'Kein Blut involviert – unproblematisch',
+    sc_s1: 'S1 – Gute Heilungsaussicht', sc_s1_sub: 'z.\u00A0B. nach Unfall oder OP-Komplikation',
+    sc_s2: 'S2 – Keine Aussicht auf Besserung', sc_s2_sub: 'z.\u00A0B. Wachkoma, schwere Hirnschädigung',
+    sc_s3: 'S3 – Sterbephase', sc_s3_sub: 'Unheilbare Erkrankung im Endstadium',
+    s5_title: 'Blutsparende Alternativen', s5_sub: 'Kein Blutprodukt – immer akzeptiert',
     volumen_name: 'Kristalloide & kolloidale Volumenersatzmittel', volumen_desc: 'Kochsalzlösung, Ringer, Plasmaexpander. Kein Blut.',
     eisen_name: 'Eiseninfusion & Vitamintherapie', eisen_desc: 'Stärkt körpereigene Blutbildung. Kein Blut.',
     minimal_name: 'Minimales Blutentnahme-Protokoll', minimal_desc: 'Nur das absolut Notwendige für Tests entnehmen.',
     summary_title: 'Meine Übersicht',
     btn_text: '📄 Text für Punkt 3', btn_summary: 'Übersicht →',
-    modal_title: 'Meine Entscheidungen', modal_sub: 'Für die Patientenverfügung (dpa-X Ge) – bitte mit dem Krankenhausverbindungskomitee abstimmen.',
+    modal_title: 'Meine Entscheidungen', modal_sub: 'Textvorschlag für das Dokument zur ärztlichen Versorgung. Bei Unsicherheiten bitte einen Versammlungsältesten ansprechen.',
     tab_text: 'Text für Punkt 3', tab_summary: 'Übersicht',
-    text_hint: '📋 Dieser Text ist für Punkt 3 des dpa-X Ge-Formulars. Kopiere ihn und trage ihn in die Freitextzeilen ein.',
+    text_hint: '📋 Dieser Textvorschlag kann als Grundlage für das Dokument zur ärztlichen Versorgung dienen. Bei Unsicherheiten bitte einen Versammlungsältesten ansprechen.',
     offen_warning: '⚠️ Noch offene Entscheidungen erscheinen als [OFFEN]. Bitte alle Punkte festlegen vor dem Ausfüllen.',
     btn_close: 'Schließen', btn_copy: 'Text kopieren', btn_print: 'Drucken',
     mode_light: 'Light', mode_dark: 'Dark',
@@ -449,61 +492,63 @@ const T = {
     txt_ja: 'Ich willige ein in', txt_nein: 'Ich lehne ab', txt_offen: 'Noch nicht entschieden [OFFEN]',
     txt_blutspar_detail: 'Ich wünsche ausdrücklich blutsparende Techniken: Volumenersatzmittel (Kristalloide/Kolloide), Eiseninfusionen sowie minimales Blutentnahme-Protokoll.',
     txt_closing: 'Diese Anweisungen ergänzen Punkt 2 und gelten unter allen Umständen, auch lebensbedrohlichen.',
-    sc_labels: { s1: 'Vorübergehend heilbar', s2: 'Dauerhaft bewusstlos', s3: 'Sterbephase' },
-    fix_nein_label: 'Feststehend abgelehnt (Fremdblut)', fix_ja_label: 'Immer gewünscht (kein Blut)',
+    sc_labels: { s1: 'Gute Heilungsaussicht', s2: 'Keine Aussicht auf Besserung', s3: 'Sterbephase' },
+    fix_nein_label: 'Abgelehnt (Fremdblut)', fix_ja_label: 'Immer akzeptiert (kein Blutprodukt)',
     accepted_label: 'Akzeptiert', rejected_label: 'Abgelehnt', open_label: 'Noch offen',
+    btn_reset: 'Zurücksetzen', progress: '{done} von {total} entschieden',
   },
   en: {
     eyebrow: 'Personal Documentation · Advance Directive',
     h1: 'Blood-Related Procedures &\nLife-Sustaining Measures',
-    header_sub: 'Decision guide for Jehovah\'s Witnesses – generates ready-to-use text for your advance directive.',
-    notice_main: 'Select your personal decision for each procedure. Fixed items (grey) are not a matter of conscience. The generated text should be reviewed with your hospital liaison committee.',
-    leg_accepted: 'Accepted', leg_rejected: 'Refused', leg_open: 'Undecided', leg_fixed: 'Fixed',
-    s1_title: 'Absolutely Refused', s1_sub: 'Allogeneic blood – not a conscience matter (Acts 15:28, 29)',
+    header_sub: 'Decision guide for Jehovah\'s Witnesses – generates a text suggestion for your advance directive.',
+    notice_main: 'Select your personal decision for each procedure. If you are unsure about any item or its wording, please speak to one of your congregation elders.',
+    leg_accepted: 'Accepted', leg_rejected: 'Refused', leg_open: 'Undecided',
+    s1_title: 'Allogeneic Blood', s1_sub: 'Refused – not a conscience matter (Acts 15:28, 29)',
     vollblut_name: 'Whole Blood (allogeneic)', vollblut_desc: 'Complete blood transfusion from another person.',
     ery_name: 'Red Blood Cells (allogeneic)', ery_desc: 'Primary component – oxygen transport.',
     leuko_name: 'White Blood Cells (allogeneic)', leuko_desc: 'Primary component – immune defence.',
     thrombo_name: 'Platelets (allogeneic)', thrombo_desc: 'Primary component – blood clotting.',
     plasma_name: 'Plasma (allogeneic)', plasma_desc: 'Primary component – liquid blood fraction.',
-    fixed_nein: 'Fixed – NO', no_blood: 'Not a blood product',
+    no_blood: 'Not a blood product',
     s2_title: 'Autologous Blood Procedures', s2_sub: 'Conscience matter – personal decision required',
-    haemo_name: 'Normovolaemic Haemodilution', haemo_desc: 'Own blood drawn before surgery, stored in a bag, returned afterwards.', haemo_note: '⚠️ Blood leaves the body and is stored externally.',
-    cellsalvage_name: 'Cell Salvage (intraoperative autotransfusion)', cellsalvage_desc: 'Surgical blood is collected, washed and immediately reinfused.', cellsalvage_note: '💡 Acceptable if a closed, continuous circuit is maintained.',
-    hlm_name: 'Heart-Lung Machine', hlm_desc: 'Takes over cardiac/pulmonary function; blood routed through external machine.', hlm_note: '⚠️ Note in the directive: closed circuit, no storage.',
-    dialyse_name: 'Haemodialysis', dialyse_desc: 'Blood is cleaned externally and returned (closed circuit possible).',
-    plasmapherese_name: 'Plasmapheresis (autologous)', plasmapherese_desc: 'Own plasma is cleaned and returned along with blood cells.', plasmapherese_note: '⚠️ Only if own plasma is cleaned – no allogeneic plasma replacement.',
-    markierung_name: 'Blood Labelling (nuclear medicine)', markierung_desc: 'Own blood cells are labelled and returned for diagnostic purposes.',
-    epiblut_name: 'Epidural Blood Patch', epiblut_desc: 'Small amount of own blood immediately injected into the epidural space. No storage.',
-    s3_title: 'Fractions of Primary Components', s3_sub: 'Individual conscience decision',
-    s3_notice: 'Fractions do not contain whole blood components. Whether to accept them is a personal conscience matter.',
-    albumin_name: 'Albumin', albumin_desc: 'Derived from plasma. Key transport protein. Used in protein deficiency, shock.',
-    immun_name: 'Immunoglobulins', immun_desc: 'Derived from plasma. Antibodies for immune support.',
-    gerin_name: 'Clotting Factors', gerin_desc: 'Derived from plasma. Used in haemophilia (Factor VIII, IX, XIII etc.).',
-    haemoglobin_name: 'Haemoglobin-based Oxygen Carriers', haemoglobin_desc: 'Extracted from red cells, chemically modified. Blood substitute.',
-    epo_name: 'Erythropoietin (EPO)', epo_desc: 'Synthetic hormone stimulating red cell production. Not a direct blood product.',
-    prp_name: 'Platelet Growth Factors (PRP)', prp_desc: 'Platelet-rich plasma from own blood. Used in orthopaedic healing.',
-    s4_title: 'Life-Sustaining Measures', s4_sub: 'Context-dependent – three scenarios',
-    s4_notice: 'S1 = Temporarily curable (e.g. accident, surgical complication) · S2 = Permanently unconscious (e.g. persistent vegetative state) · S3 = Terminal phase (end-stage incurable illness).',
+    s2_notice: 'See the {link_start}Governing Body Update No.\u00A02 (2026){link_end} for current guidance.',
+    haemo_name: 'Normovolaemic Haemodilution', haemo_desc: 'Before surgery, a defined amount of the patient\'s own blood is drawn and replaced with an infusion solution. The collected blood is stored in a bag and returned after surgery.',
+    cellsalvage_name: 'Cell Salvage (intraoperative autotransfusion)', cellsalvage_desc: 'Blood lost during surgery is suctioned, machine-washed to remove impurities, and immediately reinfused into the patient.',
+    hlm_name: 'Heart-Lung Machine', hlm_desc: 'The machine temporarily takes over heart and lung function. Blood is routed through an external circuit and returned to the body.',
+    dialyse_name: 'Haemodialysis', dialyse_desc: 'Blood is filtered and cleaned outside the body by a dialysis machine, then returned to the circulation.',
+    plasmapherese_name: 'Plasmapheresis', plasmapherese_desc: 'The patient\'s own plasma is separated from the blood, cleaned, and returned together with the blood cells.', plasmapherese_note: '⚠️ If accepted, the advance directive should explicitly state that only the patient\'s own plasma is to be cleaned and returned – no replacement with allogeneic plasma.',
+    markierung_name: 'Blood Labelling (nuclear medicine)', markierung_desc: 'For diagnostic purposes, a small amount of the patient\'s own blood is drawn, tagged with a marker, and then returned.',
+    epiblut_name: 'Epidural Blood Patch', epiblut_desc: 'A small amount of the patient\'s own blood is immediately injected into the epidural space (the area surrounding the spinal membranes) to seal a cerebrospinal fluid leak (a leakage of the fluid surrounding the brain and spinal cord, e.g. after a spinal tap). No storage involved.',
+    s3_title: 'Fractions of Primary Components', s3_sub: 'Conscience matter – personal decision',
+    s3_notice: 'Fractions (some doctors also use the term "derivatives") are individual components obtained from the four primary components of blood. They do not contain whole blood and are in some cases also used in vaccines or available as synthetic variants.',
+    albumin_name: 'Albumin', albumin_desc: 'A transport protein derived from blood plasma. Used medically for severe protein deficiency, shock, or burns. Albumin is also included as a stabiliser in some vaccines.',
+    immun_name: 'Immunoglobulins', immun_desc: 'Antibodies derived from blood plasma. Used for passive immunisation or immune deficiency. Certain immunoglobulins are also a component of some vaccines (e.g. anti-D, tetanus immunoglobulin).',
+    gerin_name: 'Clotting Factors', gerin_desc: 'Derived from plasma or increasingly produced recombinantly (synthetically). Used primarily for haemophilia (e.g. Factor VIII, IX). Recombinant variants contain no human blood.',
+    haemoglobin_name: 'Haemoglobin-based Oxygen Carriers', haemoglobin_desc: 'Haemoglobin extracted from red blood cells and chemically modified to serve as an oxygen carrier. Being researched as an alternative to blood transfusions. Fully synthetic variants are also in development.',
+    epo_name: 'Erythropoietin (EPO)', epo_desc: 'A hormone that stimulates the production of red blood cells. Today produced entirely synthetically (recombinantly) and contains no human blood. Used e.g. for anaemia or before planned surgery.',
+    prp_name: 'Platelet Growth Factors (PRP)', prp_desc: 'Platelet-rich plasma obtained from the patient\u2019s own blood. Contains growth factors that promote wound healing. Used e.g. in orthopaedics or dentistry.',
+    s4_title: 'Life-Sustaining Measures', s4_sub: 'Personal decision – depending on scenario',
+    s4_notice: 'The decision for each measure may differ depending on the situation. Three scenarios are therefore distinguished: S1 = Good prospect of recovery · S2 = No prospect of improvement · S3 = Terminal phase.',
     lm_items: [
-      { id: 'beatmung', name: 'Mechanical Ventilation', desc: 'Artificial breathing via intubation or mask when independent breathing is no longer possible.' },
-      { id: 'reanimation', name: 'Cardiopulmonary Resuscitation (CPR)', desc: 'Chest compressions, defibrillation upon cardiac arrest.' },
-      { id: 'ernaehrung', name: 'Artificial Nutrition & Hydration', desc: 'Feeding tube (PEG) or intravenous infusion when eating/drinking is no longer possible.' },
-      { id: 'intensiv', name: 'Intensive Care Treatment', desc: 'Transfer to ICU with all available life-sustaining measures.' },
-      { id: 'schmerz', name: 'Pain Relief & Palliative Care', desc: 'Analgesics and palliative sedation for comfort – even if this may hasten the dying process.' },
-      { id: 'antibiose', name: 'Life-Prolonging Medications', desc: 'Antibiotics, chemotherapy etc. solely to prolong life without prospect of recovery.' },
+      { id: 'beatmung', name: 'Mechanical Ventilation', desc: 'A ventilator takes over breathing when the lungs can no longer do so independently. This is done via a tube in the windpipe (intubation) or a breathing mask.' },
+      { id: 'reanimation', name: 'Cardiopulmonary Resuscitation (CPR)', desc: 'In the event of cardiac arrest, an attempt is made to restart the heart through chest compressions and electric shocks (defibrillation).' },
+      { id: 'ernaehrung', name: 'Artificial Nutrition & Hydration', desc: 'When eating or drinking is no longer possible, nutrients and fluids are supplied through a feeding tube or directly into a vein (infusion).' },
+      { id: 'intensiv', name: 'Intensive Care Treatment', desc: 'Transfer to the intensive care unit, where all available equipment and medication are used to maintain bodily functions.' },
+      { id: 'schmerz', name: 'Pain Relief & Palliative Care', desc: 'Administration of painkillers and sedatives to relieve suffering. In some cases, this may hasten the dying process as a side effect.' },
+      { id: 'antibiose', name: 'Life-Prolonging Medications', desc: 'Medications such as antibiotics or chemotherapy used solely to prolong life when there is no prospect of recovery.' },
     ],
-    sc_s1: 'S1 – Temporarily curable', sc_s1_sub: 'e.g. accident, surgical complication',
-    sc_s2: 'S2 – Permanently unconscious', sc_s2_sub: 'Persistent vegetative state',
+    sc_s1: 'S1 – Good prospect of recovery', sc_s1_sub: 'e.g. after accident or surgical complication',
+    sc_s2: 'S2 – No prospect of improvement', sc_s2_sub: 'e.g. persistent vegetative state, severe brain damage',
     sc_s3: 'S3 – Terminal phase', sc_s3_sub: 'End-stage incurable illness',
-    s5_title: 'Blood-Sparing Alternatives', s5_sub: 'No blood involved – unproblematic',
+    s5_title: 'Blood-Sparing Alternatives', s5_sub: 'No blood product – always accepted',
     volumen_name: 'Crystalloid & Colloid Volume Expanders', volumen_desc: 'Saline, Ringer\'s solution, plasma expanders. No blood.',
     eisen_name: 'Iron Infusion & Vitamin Therapy', eisen_desc: 'Supports endogenous blood production. No blood.',
     minimal_name: 'Minimal Blood Sampling Protocol', minimal_desc: 'Only the absolute minimum blood drawn for tests.',
     summary_title: 'My Overview',
     btn_text: '📄 Text for Directive', btn_summary: 'Overview →',
-    modal_title: 'My Decisions', modal_sub: 'For the advance directive – please review with your hospital liaison committee.',
+    modal_title: 'My Decisions', modal_sub: 'Text suggestion for your advance directive. If unsure, please speak to one of your congregation elders.',
     tab_text: 'Text for Directive', tab_summary: 'Overview',
-    text_hint: '📋 This text is ready to be entered into your advance directive. Review with your hospital liaison committee before signing.',
+    text_hint: '📋 This text suggestion can serve as a basis for your advance directive. If unsure, please speak to one of your congregation elders.',
     offen_warning: '⚠️ Some decisions are still open – marked [OPEN]. Please decide all items before completing the form.',
     btn_close: 'Close', btn_copy: 'Copy Text', btn_print: 'Print',
     mode_light: 'Light', mode_dark: 'Dark',
@@ -515,61 +560,63 @@ const T = {
     txt_ja: 'I consent to', txt_nein: 'I refuse', txt_offen: 'Not yet decided [OPEN]',
     txt_blutspar_detail: 'I expressly request blood-sparing techniques: volume expanders (crystalloids/colloids), iron infusions, and a minimal blood sampling protocol.',
     txt_closing: 'These instructions supplement point 2 of the directive and apply under all circumstances, including life-threatening ones.',
-    sc_labels: { s1: 'Temporarily curable', s2: 'Permanently unconscious', s3: 'Terminal phase' },
-    fix_nein_label: 'Fixed refusal (allogeneic blood)', fix_ja_label: 'Always accepted (not blood products)',
+    sc_labels: { s1: 'Good prospect of recovery', s2: 'No prospect of improvement', s3: 'Terminal phase' },
+    fix_nein_label: 'Refused (allogeneic blood)', fix_ja_label: 'Always accepted (no blood product)',
     accepted_label: 'Accepted', rejected_label: 'Refused', open_label: 'Undecided',
+    btn_reset: 'Reset', progress: '{done} of {total} decided',
   },
   es: {
     eyebrow: 'Documentación Personal · Directiva Anticipada',
     h1: 'Procedimientos Relacionados con Sangre\ny Medidas de Soporte Vital',
-    header_sub: 'Guía de decisiones para Testigos de Jehová – genera texto listo para usar en su directiva anticipada.',
-    notice_main: 'Selecciona tu decisión personal para cada procedimiento. Los puntos fijos (gris) no son asunto de conciencia. El texto generado debe revisarse con el comité de enlace hospitalario.',
-    leg_accepted: 'Aceptado', leg_rejected: 'Rechazado', leg_open: 'Pendiente', leg_fixed: 'Fijo',
-    s1_title: 'Rechazado Absolutamente', s1_sub: 'Sangre alogénica – no es asunto de conciencia (Hch. 15:28, 29)',
+    header_sub: 'Guía de decisiones para Testigos de Jehová – genera una propuesta de texto para su directiva anticipada.',
+    notice_main: 'Selecciona tu decisión personal para cada procedimiento. Si tienes dudas sobre algún punto o su redacción, consulta a uno de tus ancianos de congregación.',
+    leg_accepted: 'Aceptado', leg_rejected: 'Rechazado', leg_open: 'Pendiente',
+    s1_title: 'Sangre Alogénica', s1_sub: 'Rechazado – no es asunto de conciencia (Hch. 15:28, 29)',
     vollblut_name: 'Sangre total (alogénica)', vollblut_desc: 'Transfusión completa de sangre de otra persona.',
     ery_name: 'Glóbulos rojos (alogénicos)', ery_desc: 'Componente primario – transporte de oxígeno.',
     leuko_name: 'Glóbulos blancos (alogénicos)', leuko_desc: 'Componente primario – defensa inmune.',
     thrombo_name: 'Plaquetas (alogénicas)', thrombo_desc: 'Componente primario – coagulación.',
     plasma_name: 'Plasma (alogénico)', plasma_desc: 'Componente primario – fracción líquida de la sangre.',
-    fixed_nein: 'Fijo – NO', no_blood: 'No es producto sanguíneo',
+    no_blood: 'No es producto sanguíneo',
     s2_title: 'Procedimientos con Sangre Autóloga', s2_sub: 'Asunto de conciencia – decisión personal',
-    haemo_name: 'Hemodilucion Normovolémica', haemo_desc: 'Sangre propia extraída antes de la operación, almacenada y devuelta después.', haemo_note: '⚠️ La sangre sale del cuerpo y se almacena externamente.',
-    cellsalvage_name: 'Recuperación de Sangre Intraoperatoria', cellsalvage_desc: 'La sangre quirúrgica se recoge, lava y reinfunde inmediatamente.', cellsalvage_note: '💡 Aceptable si se mantiene un circuito cerrado y continuo.',
-    hlm_name: 'Máquina Corazón-Pulmón', hlm_desc: 'Asume funciones cardíacas y pulmonares; sangre por máquina externa.', hlm_note: '⚠️ Indicar en la directiva: circuito cerrado, sin almacenamiento.',
-    dialyse_name: 'Hemodiálisis', dialyse_desc: 'Sangre limpiada externamente y devuelta (posible circuito cerrado).',
-    plasmapherese_name: 'Plasmaféresis (autóloga)', plasmapherese_desc: 'Plasma propio limpiado, células sanguíneas devueltas.', plasmapherese_note: '⚠️ Solo si se utiliza plasma propio – sin sustitución por plasma alogénico.',
-    markierung_name: 'Marcado de Sangre (Medicina Nuclear)', markierung_desc: 'Células sanguíneas propias marcadas y devueltas con fines diagnósticos.',
-    epiblut_name: 'Parche Hemático Epidural', epiblut_desc: 'Pequeña cantidad de sangre propia inyectada inmediatamente en el espacio epidural.',
-    s3_title: 'Fracciones de Componentes Principales', s3_sub: 'Decisión de conciencia individual',
-    s3_notice: 'Las fracciones no contienen componentes sanguíneos completos. Aceptarlos o no es una decisión de conciencia personal.',
-    albumin_name: 'Albúmina', albumin_desc: 'Del plasma. Proteína de transporte. Uso en déficit proteico, shock.',
-    immun_name: 'Inmunoglobulinas', immun_desc: 'Del plasma. Anticuerpos para apoyo inmune.',
-    gerin_name: 'Factores de Coagulación', gerin_desc: 'Del plasma. Uso en hemofilia (Factor VIII, IX, XIII, etc.).',
-    haemoglobin_name: 'Transportadores de Oxígeno basados en Hemoglobina', haemoglobin_desc: 'Extraídos de glóbulos rojos, modificados químicamente. Sustituto de sangre.',
-    epo_name: 'Eritropoyetina (EPO)', epo_desc: 'Hormona sintética que estimula la producción de glóbulos rojos.',
-    prp_name: 'Factores de Crecimiento Plaquetario (PRP)', prp_desc: 'Plasma rico en plaquetas de sangre propia. Uso en curación ortopédica.',
-    s4_title: 'Medidas de Soporte Vital', s4_sub: 'Según contexto – tres escenarios',
-    s4_notice: 'S1 = Temporalmente curable (p.ej. accidente, complicación quirúrgica) · S2 = Inconsciencia permanente (p.ej. estado vegetativo) · S3 = Fase terminal (enfermedad incurable en etapa final).',
+    s2_notice: 'Consulte la {link_start}Información del Cuerpo Gobernante n.\u00BA\u00A02 (2026){link_end} para orientación actualizada.',
+    haemo_name: 'Hemodilución Normovolémica', haemo_desc: 'Antes de la operación se extrae una cantidad definida de sangre propia y se sustituye por una solución de infusión. La sangre recogida se almacena en una bolsa y se devuelve después de la cirugía.',
+    cellsalvage_name: 'Recuperación de Sangre Intraoperatoria', cellsalvage_desc: 'La sangre perdida durante la cirugía se aspira, se lava mecánicamente para eliminar impurezas y se reinfunde inmediatamente al paciente.',
+    hlm_name: 'Máquina Corazón-Pulmón', hlm_desc: 'La máquina asume temporalmente las funciones del corazón y los pulmones. La sangre circula por un circuito externo y se devuelve al cuerpo.',
+    dialyse_name: 'Hemodiálisis', dialyse_desc: 'La sangre se filtra y limpia fuera del cuerpo mediante un equipo de diálisis y luego se devuelve a la circulación.',
+    plasmapherese_name: 'Plasmaféresis', plasmapherese_desc: 'El plasma propio se separa de la sangre, se limpia y se devuelve junto con las células sanguíneas.', plasmapherese_note: '⚠️ En caso de aceptación, la directiva anticipada debe indicar expresamente que solo se limpiará y devolverá el plasma propio – sin sustitución por plasma alogénico.',
+    markierung_name: 'Marcado de Sangre (Medicina Nuclear)', markierung_desc: 'Con fines diagnósticos se extrae una pequeña cantidad de sangre propia, se marca con un trazador y se devuelve.',
+    epiblut_name: 'Parche Hemático Epidural', epiblut_desc: 'Se inyecta inmediatamente una pequeña cantidad de sangre propia en el espacio epidural (la zona que rodea las membranas de la médula espinal) para sellar una fuga de líquido cefalorraquídeo (una pérdida del líquido que rodea el cerebro y la médula espinal, p.\u00A0ej. tras una punción lumbar). No se almacena.',
+    s3_title: 'Fracciones de Componentes Principales', s3_sub: 'Asunto de conciencia – decisión personal',
+    s3_notice: 'Las fracciones (algunos médicos también usan el término «derivados») son componentes individuales obtenidos de los cuatro componentes principales de la sangre. No contienen sangre completa y en algunos casos también se utilizan en vacunas o están disponibles como variantes sintéticas.',
+    albumin_name: 'Albúmina', albumin_desc: 'Una proteína de transporte obtenida del plasma sanguíneo. Se utiliza en casos de déficit proteico grave, shock o quemaduras. La albúmina también se incluye como estabilizador en algunas vacunas.',
+    immun_name: 'Inmunoglobulinas', immun_desc: 'Anticuerpos obtenidos del plasma sanguíneo. Se utilizan para inmunización pasiva o en casos de inmunodeficiencia. Algunas inmunoglobulinas también forman parte de ciertas vacunas (p.\u00A0ej. anti-D, inmunoglobulina antitetánica).',
+    gerin_name: 'Factores de Coagulación', gerin_desc: 'Obtenidos del plasma o producidos cada vez más de forma recombinante (sintética). Se usan principalmente en hemofilia (p.\u00A0ej. Factor VIII, IX). Las variantes recombinantes no contienen sangre humana.',
+    haemoglobin_name: 'Transportadores de Oxígeno basados en Hemoglobina', haemoglobin_desc: 'Hemoglobina extraída de glóbulos rojos y modificada químicamente para funcionar como transportador de oxígeno. Se investiga como alternativa a las transfusiones. También se están desarrollando variantes totalmente sintéticas.',
+    epo_name: 'Eritropoyetina (EPO)', epo_desc: 'Una hormona que estimula la producción de glóbulos rojos. Actualmente se produce de forma completamente sintética (recombinante) y no contiene sangre humana. Se utiliza p.\u00A0ej. en casos de anemia o antes de cirugías programadas.',
+    prp_name: 'Factores de Crecimiento Plaquetario (PRP)', prp_desc: 'Plasma rico en plaquetas obtenido de la propia sangre del paciente. Contiene factores de crecimiento que favorecen la cicatrización. Se utiliza p.\u00A0ej. en ortopedia u odontología.',
+    s4_title: 'Medidas de Soporte Vital', s4_sub: 'Decisión personal – según el escenario',
+    s4_notice: 'La decisión para cada medida puede variar según la situación. Por eso se distinguen tres escenarios: S1 = Buenas perspectivas de recuperación · S2 = Sin perspectiva de mejoría · S3 = Fase terminal.',
     lm_items: [
-      { id: 'beatmung', name: 'Ventilación Mecánica', desc: 'Respiración artificial mediante intubación o mascarilla.' },
-      { id: 'reanimation', name: 'Reanimación Cardiopulmonar (RCP)', desc: 'Compresiones torácicas, desfibrilación en paro cardíaco.' },
-      { id: 'ernaehrung', name: 'Nutrición e Hidratación Artificial', desc: 'Sonda nasogástrica (PEG) o infusión intravenosa cuando comer/beber ya no es posible.' },
-      { id: 'intensiv', name: 'Tratamiento en Cuidados Intensivos', desc: 'Ingreso en UCI con todos los medios disponibles de soporte vital.' },
-      { id: 'schmerz', name: 'Alivio del Dolor y Cuidados Paliativos', desc: 'Analgésicos y sedación paliativa para alivio del sufrimiento.' },
-      { id: 'antibiose', name: 'Medicamentos para Prolongar la Vida', desc: 'Antibióticos, quimioterapia, etc., únicamente para prolongar la vida sin expectativa de recuperación.' },
+      { id: 'beatmung', name: 'Ventilación Mecánica', desc: 'Un respirador asume la función de respirar cuando los pulmones ya no pueden hacerlo por sí solos. Se realiza mediante un tubo en la tráquea (intubación) o una mascarilla respiratoria.' },
+      { id: 'reanimation', name: 'Reanimación Cardiopulmonar (RCP)', desc: 'En caso de paro cardíaco, se intenta reiniciar el corazón mediante compresiones torácicas y descargas eléctricas (desfibrilación).' },
+      { id: 'ernaehrung', name: 'Nutrición e Hidratación Artificial', desc: 'Cuando ya no es posible comer o beber, se administran nutrientes y líquidos a través de una sonda gástrica o directamente por vía intravenosa (infusión).' },
+      { id: 'intensiv', name: 'Tratamiento en Cuidados Intensivos', desc: 'Ingreso en la unidad de cuidados intensivos, donde se emplean todos los equipos y medicamentos disponibles para mantener las funciones corporales.' },
+      { id: 'schmerz', name: 'Alivio del Dolor y Cuidados Paliativos', desc: 'Administración de analgésicos y sedantes para aliviar el sufrimiento. En algunos casos, esto puede acelerar el proceso de muerte como efecto secundario.' },
+      { id: 'antibiose', name: 'Medicamentos para Prolongar la Vida', desc: 'Medicamentos como antibióticos o quimioterapia utilizados únicamente para prolongar la vida cuando no existe perspectiva de curación.' },
     ],
-    sc_s1: 'S1 – Temporalmente curable', sc_s1_sub: 'p.ej. accidente, cirugía',
-    sc_s2: 'S2 – Inconsciencia permanente', sc_s2_sub: 'Estado vegetativo persistente',
+    sc_s1: 'S1 – Buenas perspectivas de recuperación', sc_s1_sub: 'p.\u00A0ej. tras accidente o complicación quirúrgica',
+    sc_s2: 'S2 – Sin perspectiva de mejoría', sc_s2_sub: 'p.\u00A0ej. estado vegetativo, daño cerebral grave',
     sc_s3: 'S3 – Fase terminal', sc_s3_sub: 'Enfermedad incurable en etapa final',
-    s5_title: 'Alternativas para Reducir el Uso de Sangre', s5_sub: 'Sin sangre – sin problemas',
+    s5_title: 'Alternativas sin Sangre', s5_sub: 'Ningún producto sanguíneo – siempre aceptado',
     volumen_name: 'Expansores de Volumen (Cristaloides y Coloides)', volumen_desc: 'Suero salino, Ringer, expansores plasmáticos. Sin sangre.',
     eisen_name: 'Infusión de Hierro y Terapia Vitamínica', eisen_desc: 'Apoya la producción endógena de sangre. Sin sangre.',
     minimal_name: 'Protocolo Mínimo de Extracción', minimal_desc: 'Solo el mínimo indispensable de sangre para pruebas.',
     summary_title: 'Mi Resumen',
     btn_text: '📄 Texto para la Directiva', btn_summary: 'Resumen →',
-    modal_title: 'Mis Decisiones', modal_sub: 'Para la directiva anticipada – revise con el comité de enlace hospitalario.',
+    modal_title: 'Mis Decisiones', modal_sub: 'Propuesta de texto para la directiva anticipada. En caso de dudas, consulta a uno de tus ancianos de congregación.',
     tab_text: 'Texto para la Directiva', tab_summary: 'Resumen',
-    text_hint: '📋 Este texto está listo para introducirse en su directiva anticipada.',
+    text_hint: '📋 Esta propuesta de texto puede servir como base para tu directiva anticipada. En caso de dudas, consulta a uno de tus ancianos de congregación.',
     offen_warning: '⚠️ Algunas decisiones están pendientes – marcadas como [PENDIENTE].',
     btn_close: 'Cerrar', btn_copy: 'Copiar Texto', btn_print: 'Imprimir',
     mode_light: 'Claro', mode_dark: 'Oscuro',
@@ -581,61 +628,63 @@ const T = {
     txt_ja: 'Consiento en', txt_nein: 'Rechazo', txt_offen: 'Aún no decidido [PENDIENTE]',
     txt_blutspar_detail: 'Solicito expresamente técnicas de ahorro de sangre: expansores de volumen, infusiones de hierro y protocolo mínimo de extracción.',
     txt_closing: 'Estas instrucciones complementan las de la sección 2 y aplican en todas las circunstancias.',
-    sc_labels: { s1: 'Temporalmente curable', s2: 'Inconsciencia permanente', s3: 'Fase terminal' },
-    fix_nein_label: 'Rechazado de forma fija (sangre alogénica)', fix_ja_label: 'Siempre aceptado (no es sangre)',
+    sc_labels: { s1: 'Buenas perspectivas de recuperación', s2: 'Sin perspectiva de mejoría', s3: 'Fase terminal' },
+    fix_nein_label: 'Rechazado (sangre alogénica)', fix_ja_label: 'Siempre aceptado (ningún producto sanguíneo)',
     accepted_label: 'Aceptado', rejected_label: 'Rechazado', open_label: 'Pendiente',
+    btn_reset: 'Reiniciar', progress: '{done} de {total} decididos',
   },
   fr: {
     eyebrow: 'Documentation Personnelle · Directives Anticipées',
     h1: 'Procédures liées au Sang &\nMesures de Maintien en Vie',
-    header_sub: 'Guide de décision pour les Témoins de Jéhovah – génère un texte prêt à l\'emploi pour vos directives anticipées.',
-    notice_main: 'Choisissez votre décision personnelle pour chaque procédure. Les points fixes (gris) ne sont pas une question de conscience. Le texte généré doit être revu avec le comité de liaison hospitalier.',
-    leg_accepted: 'Accepté', leg_rejected: 'Refusé', leg_open: 'En attente', leg_fixed: 'Fixé',
-    s1_title: 'Refusé Absolument', s1_sub: 'Sang allogénique – pas une question de conscience (Actes 15:28, 29)',
+    header_sub: 'Guide de décision pour les Témoins de Jéhovah – génère une proposition de texte pour vos directives anticipées.',
+    notice_main: 'Choisissez votre décision personnelle pour chaque procédure. En cas de doute sur un point ou sa formulation, veuillez consulter l\'un de vos anciens de congrégation.',
+    leg_accepted: 'Accepté', leg_rejected: 'Refusé', leg_open: 'En attente',
+    s1_title: 'Sang Allogénique', s1_sub: 'Refusé – pas une question de conscience (Actes 15:28, 29)',
     vollblut_name: 'Sang total (allogénique)', vollblut_desc: 'Transfusion sanguine complète provenant d\'une autre personne.',
     ery_name: 'Globules rouges (allogéniques)', ery_desc: 'Composant principal – transport de l\'oxygène.',
     leuko_name: 'Globules blancs (allogéniques)', leuko_desc: 'Composant principal – défense immunitaire.',
     thrombo_name: 'Plaquettes (allogéniques)', thrombo_desc: 'Composant principal – coagulation.',
     plasma_name: 'Plasma (allogénique)', plasma_desc: 'Composant principal – fraction liquide du sang.',
-    fixed_nein: 'Fixé – NON', no_blood: 'Pas un produit sanguin',
+    no_blood: 'Pas un produit sanguin',
     s2_title: 'Procédures avec Sang Autologue', s2_sub: 'Question de conscience – décision personnelle',
-    haemo_name: 'Hémodilution Normovolémique', haemo_desc: 'Sang propre prélevé avant l\'opération, stocké et restitué après.', haemo_note: '⚠️ Le sang quitte le corps et est stocké à l\'extérieur.',
-    cellsalvage_name: 'Récupération Peropératoire de Sang', cellsalvage_desc: 'Le sang opératoire est collecté, lavé et réinfusé immédiatement.', cellsalvage_note: '💡 Acceptable si un circuit fermé et continu est maintenu.',
-    hlm_name: 'Machine Cœur-Poumon', hlm_desc: 'Prend en charge les fonctions cardiaques/pulmonaires; sang via machine externe.', hlm_note: '⚠️ Préciser dans la directive : circuit fermé, sans stockage.',
-    dialyse_name: 'Hémodialyse', dialyse_desc: 'Sang épuré à l\'extérieur et restitué (circuit fermé possible).',
-    plasmapherese_name: 'Plasmaphérèse (autologue)', plasmapherese_desc: 'Plasma propre épuré et restitué avec les cellules sanguines.', plasmapherese_note: '⚠️ Uniquement si le plasma propre est épuré – pas de remplacement par plasma allogénique.',
-    markierung_name: 'Marquage Sanguin (Médecine Nucléaire)', markierung_desc: 'Cellules sanguines propres marquées et restituées à des fins diagnostiques.',
-    epiblut_name: 'Patch Sanguin Épidural', epiblut_desc: 'Petite quantité de sang propre injectée immédiatement dans l\'espace épidural.',
-    s3_title: 'Fractions des Composants Principaux', s3_sub: 'Décision de conscience individuelle',
-    s3_notice: 'Les fractions ne contiennent pas de composants sanguins complets. Les accepter ou non est une décision de conscience personnelle.',
-    albumin_name: 'Albumine', albumin_desc: 'Du plasma. Protéine de transport. Utilisée en cas de carence protéique, choc.',
-    immun_name: 'Immunoglobulines', immun_desc: 'Du plasma. Anticorps pour le soutien immunitaire.',
-    gerin_name: 'Facteurs de Coagulation', gerin_desc: 'Du plasma. Utilisés en cas d\'hémophilie (Facteur VIII, IX, XIII, etc.).',
-    haemoglobin_name: 'Transporteurs d\'Oxygène à base d\'Hémoglobine', haemoglobin_desc: 'Extraits de globules rouges, modifiés chimiquement. Substitut sanguin.',
-    epo_name: 'Érythropoïétine (EPO)', epo_desc: 'Hormone synthétique stimulant la production de globules rouges.',
-    prp_name: 'Facteurs de Croissance Plaquettaires (PRP)', prp_desc: 'Plasma riche en plaquettes issu du sang propre. Cicatrisation orthopédique.',
-    s4_title: 'Mesures de Maintien en Vie', s4_sub: 'Selon le contexte – trois scénarios',
-    s4_notice: 'S1 = Temporairement curable (p.ex. accident, complication chirurgicale) · S2 = Inconscience permanente (p.ex. état végétatif) · S3 = Phase terminale (maladie incurable en stade final).',
+    s2_notice: 'Voir le {link_start}compte rendu du Collège central n\u00BA\u00A02 (2026){link_end} pour les directives actuelles.',
+    haemo_name: 'Hémodilution Normovolémique', haemo_desc: 'Avant l\'opération, une quantité définie de sang propre est prélevée et remplacée par une solution de perfusion. Le sang recueilli est conservé dans une poche et restitué après la chirurgie.',
+    cellsalvage_name: 'Récupération Peropératoire de Sang', cellsalvage_desc: 'Le sang perdu pendant l\'opération est aspiré, lavé mécaniquement pour éliminer les impuretés, puis immédiatement réinfusé au patient.',
+    hlm_name: 'Machine Cœur-Poumon', hlm_desc: 'La machine assure temporairement les fonctions cardiaques et pulmonaires. Le sang circule dans un circuit externe avant d\'être restitué au corps.',
+    dialyse_name: 'Hémodialyse', dialyse_desc: 'Le sang est filtré et nettoyé à l\'extérieur du corps par un appareil de dialyse, puis renvoyé dans la circulation.',
+    plasmapherese_name: 'Plasmaphérèse', plasmapherese_desc: 'Le plasma propre est séparé du sang, nettoyé et restitué avec les cellules sanguines.', plasmapherese_note: '⚠️ En cas d\'acceptation, la directive anticipée doit mentionner expressément que seul le plasma propre sera nettoyé et restitué – aucun remplacement par du plasma allogénique.',
+    markierung_name: 'Marquage Sanguin (Médecine Nucléaire)', markierung_desc: 'À des fins diagnostiques, une petite quantité de sang propre est prélevée, marquée avec un traceur, puis restituée.',
+    epiblut_name: 'Patch Sanguin Épidural', epiblut_desc: 'Une petite quantité de sang propre est immédiatement injectée dans l\'espace épidural (la zone entourant les membranes de la moelle épinière) pour colmater une fuite de liquide céphalorachidien (une perte du liquide entourant le cerveau et la moelle épinière, p.\u00A0ex. après une ponction lombaire). Aucun stockage n\'est effectué.',
+    s3_title: 'Fractions des Composants Principaux', s3_sub: 'Question de conscience – décision personnelle',
+    s3_notice: 'Les fractions (certains médecins utilisent aussi le terme « dérivés ») sont des composants individuels obtenus à partir des quatre composants principaux du sang. Elles ne contiennent pas de sang complet et sont dans certains cas également utilisées dans des vaccins ou disponibles sous forme de variantes synthétiques.',
+    albumin_name: 'Albumine', albumin_desc: 'Une protéine de transport obtenue à partir du plasma sanguin. Utilisée en cas de carence protéique grave, de choc ou de brûlures. L\'albumine est également présente comme stabilisant dans certains vaccins.',
+    immun_name: 'Immunoglobulines', immun_desc: 'Anticorps obtenus à partir du plasma sanguin. Utilisés pour l\'immunisation passive ou en cas d\'immunodéficience. Certaines immunoglobulines entrent aussi dans la composition de vaccins (p.\u00A0ex. anti-D, immunoglobuline antitétanique).',
+    gerin_name: 'Facteurs de Coagulation', gerin_desc: 'Obtenus à partir du plasma ou de plus en plus produits par voie recombinante (synthétique). Utilisés principalement dans l\'hémophilie (p.\u00A0ex. Facteur VIII, IX). Les variantes recombinantes ne contiennent pas de sang humain.',
+    haemoglobin_name: 'Transporteurs d\'Oxygène à base d\'Hémoglobine', haemoglobin_desc: 'Hémoglobine extraite de globules rouges et modifiée chimiquement pour servir de transporteur d\'oxygène. Étudiée comme alternative aux transfusions sanguines. Des variantes entièrement synthétiques sont également en développement.',
+    epo_name: 'Érythropoïétine (EPO)', epo_desc: 'Une hormone qui stimule la production de globules rouges. Aujourd\'hui produite de manière entièrement synthétique (recombinante) et ne contient pas de sang humain. Utilisée p.\u00A0ex. en cas d\'anémie ou avant une chirurgie programmée.',
+    prp_name: 'Facteurs de Croissance Plaquettaires (PRP)', prp_desc: 'Plasma riche en plaquettes obtenu à partir du propre sang du patient. Contient des facteurs de croissance favorisant la cicatrisation. Utilisé p.\u00A0ex. en orthopédie ou en dentisterie.',
+    s4_title: 'Mesures de Maintien en Vie', s4_sub: 'Décision personnelle – selon le scénario',
+    s4_notice: 'La décision pour chaque mesure peut varier selon la situation. Trois scénarios sont donc distingués : S1 = Bonnes perspectives de guérison · S2 = Aucune perspective d\'amélioration · S3 = Phase terminale.',
     lm_items: [
-      { id: 'beatmung', name: 'Ventilation Artificielle', desc: 'Respiration artificielle par intubation ou masque lorsque la respiration autonome n\'est plus possible.' },
-      { id: 'reanimation', name: 'Réanimation Cardio-Pulmonaire (RCP)', desc: 'Massage cardiaque, défibrillation en cas d\'arrêt cardiaque.' },
-      { id: 'ernaehrung', name: 'Nutrition et Hydratation Artificielles', desc: 'Sonde gastrique (PEG) ou perfusion intraveineuse lorsque manger/boire n\'est plus possible.' },
-      { id: 'intensiv', name: 'Soins Intensifs', desc: 'Transfert en réanimation avec tous les moyens disponibles de maintien en vie.' },
-      { id: 'schmerz', name: 'Soulagement de la Douleur et Soins Palliatifs', desc: 'Antalgiques et sédation palliative pour soulager les souffrances.' },
-      { id: 'antibiose', name: 'Médicaments de Prolongation de Vie', desc: 'Antibiotiques, chimiothérapie, etc., uniquement pour prolonger la vie sans perspective de guérison.' },
+      { id: 'beatmung', name: 'Ventilation Artificielle', desc: 'Un respirateur prend en charge la respiration lorsque les poumons ne peuvent plus le faire de manière autonome. Cela se fait par un tube dans la trachée (intubation) ou un masque respiratoire.' },
+      { id: 'reanimation', name: 'Réanimation Cardio-Pulmonaire (RCP)', desc: 'En cas d\'arrêt cardiaque, on tente de relancer le cœur par des compressions thoraciques et des chocs électriques (défibrillation).' },
+      { id: 'ernaehrung', name: 'Nutrition et Hydratation Artificielles', desc: 'Lorsqu\'il n\'est plus possible de manger ou de boire, les nutriments et les liquides sont administrés par une sonde gastrique ou directement par voie intraveineuse (perfusion).' },
+      { id: 'intensiv', name: 'Soins Intensifs', desc: 'Transfert en unité de soins intensifs, où tous les équipements et médicaments disponibles sont utilisés pour maintenir les fonctions corporelles.' },
+      { id: 'schmerz', name: 'Soulagement de la Douleur et Soins Palliatifs', desc: 'Administration d\'antalgiques et de sédatifs pour soulager les souffrances. Dans certains cas, cela peut accélérer le processus de mort comme effet secondaire.' },
+      { id: 'antibiose', name: 'Médicaments de Prolongation de Vie', desc: 'Médicaments tels que des antibiotiques ou une chimiothérapie utilisés uniquement pour prolonger la vie lorsqu\'il n\'y a aucune perspective de guérison.' },
     ],
-    sc_s1: 'S1 – Temporairement curable', sc_s1_sub: 'p.ex. accident, chirurgie',
-    sc_s2: 'S2 – Inconscience permanente', sc_s2_sub: 'État végétatif persistant',
+    sc_s1: 'S1 – Bonnes perspectives de guérison', sc_s1_sub: 'p.\u00A0ex. après accident ou complication chirurgicale',
+    sc_s2: 'S2 – Aucune perspective d\'amélioration', sc_s2_sub: 'p.\u00A0ex. état végétatif, lésion cérébrale grave',
     sc_s3: 'S3 – Phase terminale', sc_s3_sub: 'Maladie incurable en stade final',
-    s5_title: 'Alternatives Économisant le Sang', s5_sub: 'Sans sang – sans problème',
+    s5_title: 'Alternatives sans Sang', s5_sub: 'Aucun produit sanguin – toujours accepté',
     volumen_name: 'Solutés de Remplissage (Cristalloïdes et Colloïdes)', volumen_desc: 'Sérum salé, Ringer, expanseurs plasmatiques. Sans sang.',
     eisen_name: 'Perfusion de Fer et Thérapie Vitaminique', eisen_desc: 'Soutient la production endogène de sang. Sans sang.',
     minimal_name: 'Protocole de Prélèvement Minimal', minimal_desc: 'Uniquement le strict minimum de sang pour les analyses.',
     summary_title: 'Mon Récapitulatif',
     btn_text: '📄 Texte pour la Directive', btn_summary: 'Récapitulatif →',
-    modal_title: 'Mes Décisions', modal_sub: 'Pour les directives anticipées – à revoir avec le comité de liaison hospitalier.',
+    modal_title: 'Mes Décisions', modal_sub: 'Proposition de texte pour vos directives anticipées. En cas de doute, veuillez consulter l\'un de vos anciens de congrégation.',
     tab_text: 'Texte pour la Directive', tab_summary: 'Récapitulatif',
-    text_hint: '📋 Ce texte est prêt à être inséré dans vos directives anticipées.',
+    text_hint: '📋 Cette proposition de texte peut servir de base pour vos directives anticipées. En cas de doute, veuillez consulter l\'un de vos anciens de congrégation.',
     offen_warning: '⚠️ Certaines décisions sont encore en attente – marquées [EN ATTENTE].',
     btn_close: 'Fermer', btn_copy: 'Copier le Texte', btn_print: 'Imprimer',
     mode_light: 'Clair', mode_dark: 'Sombre',
@@ -647,15 +696,21 @@ const T = {
     txt_ja: 'Je consens à', txt_nein: 'Je refuse', txt_offen: 'Pas encore décidé [EN ATTENTE]',
     txt_blutspar_detail: 'Je demande expressément des techniques d\'économie de sang : solutés de remplissage, perfusions de fer et protocole de prélèvement minimal.',
     txt_closing: 'Ces instructions complètent le point 2 et s\'appliquent en toutes circonstances.',
-    sc_labels: { s1: 'Temporairement curable', s2: 'Inconscience permanente', s3: 'Phase terminale' },
-    fix_nein_label: 'Refus fixe (sang allogénique)', fix_ja_label: 'Toujours accepté (pas du sang)',
+    sc_labels: { s1: 'Bonnes perspectives de guérison', s2: 'Aucune perspective d\'amélioration', s3: 'Phase terminale' },
+    fix_nein_label: 'Refusé (sang allogénique)', fix_ja_label: 'Toujours accepté (aucun produit sanguin)',
     accepted_label: 'Accepté', rejected_label: 'Refusé', open_label: 'En attente',
+    btn_reset: 'Réinitialiser', progress: '{done} sur {total} décidés',
   }
 };
+</script>
 
+<script>
 // ══════════════════════════════════════════
 // STATE
 // ══════════════════════════════════════════
+const EIGENBLUT_IDS = ['haemo','cellsalvage','hlm','dialyse','plasmapherese','markierung','epiblut'];
+const FRAKTION_IDS = ['albumin','immunglobuline','gerinnungsfaktoren','haemoglobin','epo','prp'];
+
 let currentLang = 'de';
 let isDark = true;
 const states = {};
@@ -676,14 +731,31 @@ function applyTranslations() {
   document.querySelectorAll('[data-i18n-nein]').forEach(el => el.textContent = lang.no || 'Nein');
   document.getElementById('mode-label').textContent = isDark ? lang.mode_light : lang.mode_dark;
   document.querySelector('.toolbar-brand').textContent = lang.eyebrow;
+
+  // S2 notice with dynamic link
+  const s2Notice = document.getElementById('s2-notice');
+  if (s2Notice && lang.s2_notice) {
+    const url = 'https://www.jw.org/de/bibliothek/videos/#' + currentLang + '/mediaitems/StudioFeatured/docid-1112024049_1_VIDEO';
+    const html = lang.s2_notice
+      .replace('{link_start}', '<a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline">')
+      .replace('{link_end}', '</a>');
+    s2Notice.innerHTML = html;
+  }
+
   rebuildLMCards();
   updateCounts();
 }
 
 function setLang(lang) {
   currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    const isActive = b.textContent === lang.toUpperCase();
+    b.classList.toggle('active', isActive);
+    b.setAttribute('aria-pressed', isActive);
+  });
   applyTranslations();
+  persistState();
 }
 
 // ══════════════════════════════════════════
@@ -695,6 +767,7 @@ function toggleMode() {
   const btn = document.getElementById('mode-btn');
   btn.querySelector('.mode-icon').textContent = isDark ? '☀️' : '🌙';
   document.getElementById('mode-label').textContent = isDark ? t('mode_light') : t('mode_dark');
+  persistState();
 }
 
 // ══════════════════════════════════════════
@@ -705,6 +778,8 @@ function rebuildLMCards() {
   const container = document.getElementById('lm-cards-container');
   if (!container) return;
   container.innerHTML = '';
+  const fragment = document.createDocumentFragment();
+
   (lang.lm_items || []).forEach(item => {
     const st = lmStates[item.id] || {};
     const scenarios = [
@@ -712,24 +787,66 @@ function rebuildLMCards() {
       { key: 's2', label: lang.sc_s2, sub: lang.sc_s2_sub },
       { key: 's3', label: lang.sc_s3, sub: lang.sc_s3_sub },
     ];
-    let rows = scenarios.map(sc => {
+
+    const card = document.createElement('div');
+    card.className = 'lm-card';
+    card.dataset.lmId = item.id;
+
+    const cardName = document.createElement('div');
+    cardName.className = 'lm-card-name';
+    cardName.textContent = item.name;
+    card.appendChild(cardName);
+
+    const cardDesc = document.createElement('div');
+    cardDesc.className = 'lm-card-desc';
+    cardDesc.textContent = item.desc;
+    card.appendChild(cardDesc);
+
+    const scenariosContainer = document.createElement('div');
+    scenariosContainer.className = 'lm-scenarios';
+
+    scenarios.forEach(sc => {
       const v = st[sc.key] || 'offen';
-      const jaActive = v === 'ja' ? 'active-ja' : '';
-      const neinActive = v === 'nein' ? 'active-nein' : '';
-      return `<div class="lm-row">
-        <div class="lm-label">${sc.label}<span>${sc.sub}</span></div>
-        <div class="lm-btns">
-          <button class="lm-btn ${jaActive}" onclick="setLM('${item.id}','${sc.key}','ja',this)">${lang.yes}</button>
-          <button class="lm-btn ${neinActive}" onclick="setLM('${item.id}','${sc.key}','nein',this)">${lang.no}</button>
-        </div>
-      </div>`;
-    }).join('');
-    container.innerHTML += `<div class="lm-card" data-lm-id="${item.id}">
-      <div class="lm-card-name">${item.name}</div>
-      <div class="lm-card-desc">${item.desc}</div>
-      <div class="lm-scenarios">${rows}</div>
-    </div>`;
+
+      const row = document.createElement('div');
+      row.className = 'lm-row';
+
+      const label = document.createElement('div');
+      label.className = 'lm-label';
+      label.textContent = sc.label;
+      const subSpan = document.createElement('span');
+      subSpan.textContent = sc.sub;
+      label.appendChild(subSpan);
+      row.appendChild(label);
+
+      const btns = document.createElement('div');
+      btns.className = 'lm-btns';
+      btns.setAttribute('role', 'group');
+      btns.setAttribute('aria-label', sc.label);
+
+      const jaBtn = document.createElement('button');
+      jaBtn.className = 'choice-btn lm-btn' + (v === 'ja' ? ' active-ja' : '');
+      jaBtn.textContent = lang.yes;
+      jaBtn.setAttribute('aria-pressed', String(v === 'ja'));
+      jaBtn.addEventListener('click', function() { setLM(item.id, sc.key, 'ja', this); });
+      btns.appendChild(jaBtn);
+
+      const neinBtn = document.createElement('button');
+      neinBtn.className = 'choice-btn lm-btn' + (v === 'nein' ? ' active-nein' : '');
+      neinBtn.textContent = lang.no;
+      neinBtn.setAttribute('aria-pressed', String(v === 'nein'));
+      neinBtn.addEventListener('click', function() { setLM(item.id, sc.key, 'nein', this); });
+      btns.appendChild(neinBtn);
+
+      row.appendChild(btns);
+      scenariosContainer.appendChild(row);
+    });
+
+    card.appendChild(scenariosContainer);
+    fragment.appendChild(card);
   });
+
+  container.appendChild(fragment);
 }
 
 // ══════════════════════════════════════════
@@ -740,14 +857,22 @@ function setState(id, value, btn) {
   if (states[id] === value) {
     states[id] = 'offen';
     card.className = 'card state-offen';
-    card.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active-ja','active-nein'));
+    card.querySelectorAll('.toggle-btn').forEach(b => {
+      b.classList.remove('active-ja','active-nein');
+      b.setAttribute('aria-pressed', 'false');
+    });
   } else {
     states[id] = value;
     card.className = `card state-${value}`;
-    card.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active-ja','active-nein'));
+    card.querySelectorAll('.toggle-btn').forEach(b => {
+      b.classList.remove('active-ja','active-nein');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add(`active-${value}`);
+    btn.setAttribute('aria-pressed', 'true');
   }
   updateCounts();
+  persistState();
 }
 
 function setLM(id, scenario, value, btn) {
@@ -755,12 +880,18 @@ function setLM(id, scenario, value, btn) {
   if (lmStates[id][scenario] === value) {
     lmStates[id][scenario] = 'offen';
     btn.classList.remove('active-ja','active-nein');
+    btn.setAttribute('aria-pressed', 'false');
   } else {
     lmStates[id][scenario] = value;
-    btn.parentElement.querySelectorAll('.lm-btn').forEach(b => b.classList.remove('active-ja','active-nein'));
+    btn.parentElement.querySelectorAll('.lm-btn').forEach(b => {
+      b.classList.remove('active-ja','active-nein');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add(`active-${value}`);
+    btn.setAttribute('aria-pressed', 'true');
   }
   updateCounts();
+  persistState();
 }
 
 function updateCounts() {
@@ -780,6 +911,86 @@ function updateCounts() {
   document.getElementById('count-ja').textContent = ja;
   document.getElementById('count-nein').textContent = nein;
   document.getElementById('count-offen').textContent = offen;
+
+  // Progress bar
+  const total = ja + nein + offen;
+  const done = ja + nein;
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  const tmpl = t('progress') || '{done} / {total}';
+  document.getElementById('progress-label').textContent = tmpl.replace('{done}', done).replace('{total}', total);
+}
+
+// ══════════════════════════════════════════
+// LOCALSTORAGE PERSISTENCE
+// ══════════════════════════════════════════
+const STORAGE_KEY = 'lwh-state';
+
+function persistState() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      states, lmStates, currentLang, isDark
+    }));
+  } catch (e) { /* quota exceeded or private mode – silently ignore */ }
+}
+
+function restoreState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const saved = JSON.parse(raw);
+    if (saved.states) Object.assign(states, saved.states);
+    if (saved.lmStates) Object.assign(lmStates, saved.lmStates);
+    if (saved.currentLang && T[saved.currentLang]) {
+      currentLang = saved.currentLang;
+      document.documentElement.lang = currentLang;
+      document.querySelectorAll('.lang-btn').forEach(b => {
+        const isActive = b.textContent === currentLang.toUpperCase();
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-pressed', isActive);
+      });
+    }
+    if (typeof saved.isDark === 'boolean') {
+      isDark = saved.isDark;
+      document.body.classList.toggle('light', !isDark);
+      const btn = document.getElementById('mode-btn');
+      btn.querySelector('.mode-icon').textContent = isDark ? '☀️' : '🌙';
+    }
+    // Re-apply visual states to cards
+    document.querySelectorAll('[data-id][data-state]').forEach(card => {
+      const id = card.dataset.id;
+      const s = states[id] || 'offen';
+      card.className = 'card' + (s !== 'offen' ? ` state-${s}` : '');
+      const btns = card.querySelectorAll('.toggle-btn, .choice-btn');
+      btns.forEach(b => {
+        b.classList.remove('active-ja', 'active-nein');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      if (s === 'ja' || s === 'nein') {
+        const activeBtn = card.querySelector(`[data-value="${s}"]`);
+        if (activeBtn) {
+          activeBtn.classList.add(`active-${s}`);
+          activeBtn.setAttribute('aria-pressed', 'true');
+        }
+      }
+    });
+  } catch (e) { /* corrupted data – ignore */ }
+}
+
+function resetAll() {
+  Object.keys(states).forEach(k => delete states[k]);
+  Object.keys(lmStates).forEach(k => delete lmStates[k]);
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+  // Reset card visuals
+  document.querySelectorAll('[data-id][data-state]').forEach(card => {
+    card.className = 'card';
+    card.querySelectorAll('.toggle-btn, .choice-btn').forEach(b => {
+      b.classList.remove('active-ja', 'active-nein');
+      b.setAttribute('aria-pressed', 'false');
+    });
+  });
+  rebuildLMCards();
+  updateCounts();
 }
 
 // ══════════════════════════════════════════
@@ -787,8 +998,8 @@ function updateCounts() {
 // ══════════════════════════════════════════
 function generateText() {
   const lang = T[currentLang];
-  const eigenblutIds = ['haemo','cellsalvage','hlm','dialyse','plasmapherese','markierung','epiblut'];
-  const fraktionIds = ['albumin','immunglobuline','gerinnungsfaktoren','haemoglobin','epo','prp'];
+  const eigenblutIds = EIGENBLUT_IDS;
+  const fraktionIds = FRAKTION_IDS;
 
   const lmItemNames = {};
   (lang.lm_items || []).forEach(x => lmItemNames[x.id] = x.name);
@@ -847,13 +1058,20 @@ function generateText() {
 // ══════════════════════════════════════════
 // MODAL
 // ══════════════════════════════════════════
+let previouslyFocused = null;
+
 function openModal(tab) {
   buildSummary();
   const { text, hasOffen } = generateText();
   document.getElementById('generated-text').textContent = text;
   document.getElementById('offen-warning').style.display = hasOffen ? 'block' : 'none';
-  document.getElementById('modal').classList.add('open');
+  previouslyFocused = document.activeElement;
+  const modal = document.getElementById('modal');
+  modal.classList.add('open');
   switchTab(tab || 'text');
+  // Focus the first focusable element inside the modal
+  const firstFocusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  if (firstFocusable) firstFocusable.focus();
 }
 
 function switchTab(tab) {
@@ -869,46 +1087,53 @@ function buildSummary() {
   const fixedNein = document.querySelectorAll('[data-fixed="nein"]');
   const fixedJa = document.querySelectorAll('[data-fixed="ja"]');
   const choices = document.querySelectorAll('[data-state]');
+  const fragment = document.createDocumentFragment();
 
-  let html = `<div class="modal-section"><div class="modal-section-title">${lang.fix_nein_label}</div>`;
-  fixedNein.forEach(card => {
-    const name = card.querySelector('.card-name')?.textContent || card.dataset.id;
-    html += `<div class="modal-entry"><span class="modal-entry-name">${name}</span><span class="modal-entry-state state-text-fix">NO</span></div>`;
-  });
-  html += '</div>';
+  function createSection(title, items, stateClass, stateText) {
+    const section = document.createElement('div');
+    section.className = 'modal-section';
+    const titleEl = document.createElement('div');
+    titleEl.className = 'modal-section-title';
+    titleEl.textContent = title;
+    section.appendChild(titleEl);
+    items.forEach(item => {
+      const entry = document.createElement('div');
+      entry.className = 'modal-entry';
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'modal-entry-name';
+      nameSpan.textContent = typeof item === 'string' ? item : (item.querySelector('.card-name')?.textContent || item.dataset.id);
+      entry.appendChild(nameSpan);
+      const stateSpan = document.createElement('span');
+      stateSpan.className = 'modal-entry-state ' + stateClass;
+      stateSpan.textContent = stateText;
+      entry.appendChild(stateSpan);
+      section.appendChild(entry);
+    });
+    return section;
+  }
 
+  // Fixed refusals (allogeneic blood)
+  fragment.appendChild(createSection(lang.fix_nein_label, Array.from(fixedNein), 'state-text-nein', lang.no));
+
+  // Categorize user choices
   const jaItems = [], neinItems = [], offenItems = [];
   choices.forEach(card => {
-    const id = card.dataset.id; const s = states[id] || 'offen';
-    if (s === 'ja') jaItems.push(card); else if (s === 'nein') neinItems.push(card); else offenItems.push(card);
+    const s = states[card.dataset.id] || 'offen';
+    if (s === 'ja') jaItems.push(card);
+    else if (s === 'nein') neinItems.push(card);
+    else offenItems.push(card);
   });
 
-  const getName = card => card.querySelector('.card-name')?.textContent || card.dataset.id;
+  if (jaItems.length) fragment.appendChild(createSection(lang.accepted_label, jaItems, 'state-text-ja', lang.yes));
+  if (neinItems.length) fragment.appendChild(createSection(lang.rejected_label, neinItems, 'state-text-nein', lang.no));
+  if (offenItems.length) fragment.appendChild(createSection(lang.open_label, offenItems, 'state-text-offen', '–'));
 
-  if (jaItems.length) {
-    html += `<div class="modal-section"><div class="modal-section-title">${lang.accepted_label}</div>`;
-    jaItems.forEach(c => { html += `<div class="modal-entry"><span class="modal-entry-name">${getName(c)}</span><span class="modal-entry-state state-text-ja">${lang.yes}</span></div>`; });
-    html += '</div>';
-  }
-  if (neinItems.length) {
-    html += `<div class="modal-section"><div class="modal-section-title">${lang.rejected_label}</div>`;
-    neinItems.forEach(c => { html += `<div class="modal-entry"><span class="modal-entry-name">${getName(c)}</span><span class="modal-entry-state state-text-nein">${lang.no}</span></div>`; });
-    html += '</div>';
-  }
-  if (offenItems.length) {
-    html += `<div class="modal-section"><div class="modal-section-title">${lang.open_label}</div>`;
-    offenItems.forEach(c => { html += `<div class="modal-entry"><span class="modal-entry-name">${getName(c)}</span><span class="modal-entry-state state-text-offen">–</span></div>`; });
-    html += '</div>';
-  }
+  // Fixed accepted (non-blood products)
+  fragment.appendChild(createSection(lang.fix_ja_label, Array.from(fixedJa), 'state-text-fix', '✓'));
 
-  html += `<div class="modal-section"><div class="modal-section-title">${lang.fix_ja_label}</div>`;
-  fixedJa.forEach(card => {
-    const name = card.querySelector('.card-name')?.textContent || card.dataset.id;
-    html += `<div class="modal-entry"><span class="modal-entry-name">${name}</span><span class="modal-entry-state state-text-fix">✓</span></div>`;
-  });
-  html += '</div>';
-
-  document.getElementById('modal-content').innerHTML = html;
+  const target = document.getElementById('modal-content');
+  target.innerHTML = '';
+  target.appendChild(fragment);
 }
 
 function copyText() {
@@ -921,10 +1146,82 @@ function copyText() {
   });
 }
 
-function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  if (previouslyFocused) previouslyFocused.focus();
+}
+
+// ══════════════════════════════════════════
+// EVENT DELEGATION
+// ══════════════════════════════════════════
+
+// Central click handler via data-action attributes
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+
+  switch (btn.dataset.action) {
+    case 'toggle': {
+      const card = btn.closest('[data-id]');
+      if (!card) return;
+      setState(card.dataset.id, btn.dataset.value, btn);
+      break;
+    }
+    case 'open-modal':
+      openModal(btn.dataset.tab);
+      break;
+    case 'close-modal':
+      closeModal();
+      break;
+    case 'switch-tab':
+      switchTab(btn.dataset.tab);
+      break;
+    case 'copy-text':
+      copyText();
+      break;
+    case 'print':
+      window.print();
+      break;
+    case 'reset':
+      resetAll();
+      break;
+  }
+});
+
+// Language switcher delegation
+document.querySelector('.lang-bar').addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-lang]');
+  if (btn) setLang(btn.dataset.lang);
+});
+
+// Mode toggle delegation
+document.getElementById('mode-btn').addEventListener('click', toggleMode);
+
+// Close modal on overlay click
 document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
+// Keyboard: Escape closes modal + focus trap
+document.addEventListener('keydown', function(e) {
+  const modal = document.getElementById('modal');
+  if (e.key === 'Escape' && modal.classList.contains('open')) {
+    closeModal();
+    return;
+  }
+  if (e.key === 'Tab' && modal.classList.contains('open')) {
+    const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+});
+
 // ── INIT ──
+restoreState();
 applyTranslations();
 </script>
 </body>
